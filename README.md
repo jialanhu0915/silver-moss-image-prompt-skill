@@ -26,6 +26,8 @@ Skills are loaded when a task matches, so the structure decides what the model a
 
 A typical request loads `SKILL.md`, one contract file and one style file, and opens a craft file only for the specific technique it needs.
 
+Maintenance rule: the reference tables are append-only. Entries may be added or corrected, never removed or merged; only the prose around them gets trimmed.
+
 ## Install
 
 Drop the directory into an Agent Skills path. The directory name must match `name` in the frontmatter:
