@@ -94,3 +94,41 @@ Rain droplets caught in the harsh fluorescent light, realistic wet skin highligh
 ```
 
 第一句先把蓝白光与湿沥青写死；第二句才是主体；第三句补足空间关系；末句收质感。
+
+## 8. tag 串：另一种输入形式
+
+官方支持三种输入：自然语言、tag 串、JSON Layout。本 skill 默认用散文，但用户直接丢来一堆 Danbooru tag 时，tag 串反而是更省事的载体——它不擅长表达关系与动作，但擅长列举属性。
+
+### 8.1 官方 tag 顺序
+
+```text
+Quality -> Score -> Meta -> Year -> Character -> Series -> Artist -> General
+```
+
+官方示例：`best quality, highres, hatsune miku, vocaloid, @foo bar, 1girl, blue hair`
+
+照这个顺序排，不要自己按重要性重排。`@` 前缀用来标画师，是官方示例里的写法。
+
+### 8.2 清一条 tag 串的步骤
+
+1. **留角色名**：`lillie (pokemon)`、`higuchi madoka` 这类保留，它们携带发型与神态特征。
+2. **删版权大词**：`pokemon`、`nintendo` 这类会把画面推向真人 cos 的假发质感（社区经验，未做对照，标【社区】）。
+3. **删打码与元标记**：`censored`、`mosaic censoring`、`watermark`、`sample watermark`。
+4. **删纯色背景**：`white background`、`simple background` 换成具体场景与光照方向；除非用户就是要棚拍纯色。
+5. **补关系与光线**：tag 串里通常没有「谁在前谁在后」「光从哪来」，用一句话散文补在 tag 串前后，官方允许混写。
+
+### 8.3 不要把 tag 串当散文用
+
+- 不要写权重语法（`(masterpiece:1.2)`、`[a:b:0.5]`）——那是 SD 系 WebUI 的语法，MOSS-Image 没有这个机制。
+- 不要用逗号硬串出长句（`girl, sitting, window, rain, looking, sad, hair, wet`）——关系丢失，模型只能按位置猜。
+- 需要动作关系、空间层次、镜头感时，改用散文，见 §2。
+
+### 8.4 混合写法
+
+tag 串适合放在最前做属性清单，散文跟在后边讲空间与光线：
+
+```text
+best quality, highres, 1girl, silver hair, red eyes, black coat, city street, night.
+Cool blue neon from the shopfronts falls on her left side, 35mm at eye level, shallow depth of field.
+She stands with her back to a shuttered storefront, looking toward the camera over one shoulder.
+```

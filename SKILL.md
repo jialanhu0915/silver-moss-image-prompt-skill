@@ -32,7 +32,7 @@ MOSS-Image 是 OpenMOSS 的文生图模型：Qwen3.5-9B 作文本编码器 → 4
 分辨率 W×H / Steps / CFG / Shift / Sampler / SLG / Seed
 ```
 
-不要输出「提示词解释」给用户看以外的内容；不要在正面提示词里留下 `[填入XX]` 占位符。
+交付时不要夹带与提示词无关的说明，也不要在正面提示词里留下 `[填入XX]` 占位符。
 
 ## 2. 先读哪个文件
 
@@ -75,6 +75,8 @@ MOSS-Image 是 OpenMOSS 的文生图模型：Qwen3.5-9B 作文本编码器 → 4
 
 Shift 5.0、Sampler Euler 两档通用。**档位决定规则有效性**：`photo.md` / `anime.md` 里标 `[R]` 的条目只在关 SLG 的低步数下必要，跑档 Q 时不用堆。完整表格与比例速查见 `core/params.md`。
 
+这两档是本 skill 的预设组合，不是官方推荐值：官方只给单项推荐（1M/1.5M/2M、Steps ≥50、CFG 3.0、Shift 5.0、Euler、SLG skip layer 22）与「关 SLG 更真实但可能崩细节」这一句。
+
 ## 5. 输出模板
 
 写实（档 Q）：
@@ -106,7 +108,7 @@ nsfw, worst quality, bad anatomy, watermark, jpeg artifact, [L1 通用], [L2 风
 
 ## 7. Layout 现状
 
-MOSS-Image 的 JSON Layout 在官方文档里标为 **Experimental**，当前版本实测稳定性不足：坐标要模型手工换算中心原点、跨分辨率易错位、多框互相挤占。**v1 默认只交付 caption 提示词。**
+MOSS-Image 的 JSON Layout 在官方文档里标为 **Experimental**：坐标需手工换算中心原点，跨分辨率容易漂移，多个框也会互相挤占。**v1 默认只交付 caption 提示词。**
 
 只有一种情况值得试 Layout：文字必须精确落在某个位置（海报、封面、图内表格）。此时读 `core/layout.md`，按里面的手算表格换算，并在交付时把宽高写在提示词外面。
 

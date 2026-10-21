@@ -12,9 +12,9 @@ Three style channels — **photoreal**, **anime**, **hybrid** (2D-in-3D, toon-sh
 - Not a template library. There is no one-click prompt generator here.
 - Not an image generator. Plain Markdown, no scripts, no dependencies.
 
-## Why it is split into files
+## How it is organized
 
-A 900-line single-file skill spends most of its context on sections irrelevant to the current request, and every edit means grepping through thousands of words. Here each layer holds exactly one kind of knowledge:
+Skills are loaded when a task matches, so the structure decides what the model actually reads. Each layer holds one kind of knowledge:
 
 | Layer | Directory | Contents | Loaded |
 | :--- | :--- | :--- | :--- |
@@ -24,7 +24,7 @@ A 900-line single-file skill spends most of its context on sections irrelevant t
 | Craft | `references/craft/` | camera, composition, aesthetics — style-agnostic | looked up per entry |
 | Diagnostics | `references/diagnostics/` | symptom tables, sources and evidence levels | when something breaks |
 
-A typical request loads `SKILL.md` + one core file + one style file (+ one craft file): roughly 250–400 of the repository's 2,043 lines, all of them on topic.
+A typical request loads `SKILL.md`, one contract file and one style file, and opens a craft file only for the specific technique it needs.
 
 ## Install
 
@@ -39,10 +39,10 @@ Works with any client implementing the [Agent Skills specification](https://agen
 ## Layout
 
 ```text
-SKILL.md                            routing, flow, self-check (117 lines)
+SKILL.md                            routing, flow, self-check
 references/
 ├── core/
-│   ├── caption.md                  prose deliverable: word order, length, language, anti-patterns
+│   ├── caption.md                  prose deliverable: word order, tags, length, language
 │   ├── params.md                   sampling, two presets, resolution table
 │   ├── negative.md                 layered negatives
 │   ├── text-in-image.md            glyph-size estimation, vertical text, text polluting the subject
@@ -65,21 +65,21 @@ examples/
 
 ## Three design decisions
 
-**Rules are bound to sampling presets.** The one mechanical statement in the official guide is that turning SLG off makes output look very realistic but may collapse detail. The skill splits accordingly: **Q** (SLG on, 50 steps, ≥1M px, for delivery) and **R** (SLG off, few steps, 0.6M px, for fast iteration). Rules carry `[Q]` / `[R]` tags, because anti-collapse phrasing overshoots at Q and is mandatory at R. Most prompt guides flatten techniques into one context-free list; that is their main portability failure.
+**Rules are bound to sampling presets.** The official guide states that turning SLG off makes output look very realistic but may collapse detail. The skill splits accordingly: **Q** (SLG on, 50 steps, ≥1M px, for delivery) and **R** (SLG off, few steps, 0.6M px, for fast iteration). Rules carry `[Q]` / `[R]` tags, because anti-collapse phrasing overshoots at Q and is mandatory at R.
 
 **Only visible information.** The official captioning spec asks for composition, subjects, actions, setting, colours, lighting and artistic style, and for visible information only. Camera bodies, render engines, software names and artist IDs therefore do little on their own — write the visible result instead. The rule runs through every file.
 
-**Evidence levels, stated honestly.** Every rule is tagged official / inferred / community / measured / unverified. Today almost everything is official or inferred, and **measured is empty**. That is not a gap in the writing; it is the current state, and `sources.md` lists the widely repeated claims this skill deliberately does not adopt.
+**Evidence levels, stated up front.** Every rule is tagged official, inferred, community, measured or unverified. Most entries are official or inferred; anything that would need a controlled experiment to confirm is marked unverified rather than presented as fact. `sources.md` also lists the widely repeated claims this skill deliberately does not adopt.
 
 ## Known limits
 
-- **Layout is degraded by default.** The official docs mark it experimental; coordinates must be computed by hand and drift across resolutions. `core/layout.md` is a fallback path.
-- **No web citations.** The craft files come from general photography and illustration practice. Any claim of the form "this works better on this model" is tagged `【需核】` (unverified) — none has a controlled experiment behind it.
+- **Layout is off by default.** The official docs mark it experimental; coordinates must be computed by hand and drift across resolutions. `core/layout.md` is a fallback path.
+- **Rules are not yet under controlled test.** The technique layer comes from general photography and illustration practice. Claims of the form "this works better on this model" are marked unverified.
 - **Three channels only.** Multi-panel comics, poster layout and game HUD are not written up yet; many core and craft entries carry over, but each lacks its own rules.
 
 ## Roadmap
 
-- [ ] Record `measured` entries: one same-seed A/B per unverified claim (template in `sources.md`)
+- [ ] Same-seed A/B for every unverified claim (template in `sources.md`)
 - [ ] Multi-panel comic channel (blocked on Layout stability)
 - [ ] Poster and editorial layout channel
 - [ ] Game screenshot / HUD channel
@@ -92,4 +92,4 @@ examples/
 
 ## License
 
-[Apache License 2.0](LICENSE). Chosen to match upstream MOSS-Image and to keep the copied prompt fragments usable inside tooling: commercial use, modification and redistribution are permitted, provided the copyright notice, the `LICENSE` file and the attribution in [NOTICE.md](NOTICE.md) are retained, and modified files are marked as changed. No warranty is given; the license also provides an express patent grant.
+[Apache License 2.0](LICENSE), matching upstream MOSS-Image. Commercial use, modification and redistribution are permitted, provided the copyright notice, the `LICENSE` file and the attribution in [NOTICE.md](NOTICE.md) are retained, and modified files are marked as changed. No warranty is given; the license includes an express patent grant.
