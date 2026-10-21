@@ -1,13 +1,8 @@
 # 美学词汇：光、色、技法、流派、材质
-
-要指定**光位、色彩关系、画种技法、风格流派、材质氛围**时读本文件；只缺镜头或版式时读 `camera.md` / `composition.md`。
-前提：这些词有效的根据，是官方训练 caption 规范显式要求逐项描述 `colors`、`lighting`、`artistic style` 三个维度，且只写图上可见信息。落在这三个维度里的词（`loop lighting`、`teal-and-orange`、`cel shading`）有稳定的像素对应；作者名、品牌名、软件名、渲染引擎名不在这三个维度内，单写无效，只能换写成它们造成的可见结果。
-「可抄英文短语」是起始写法，替换主体与方位即可。通道列：`写实` 走 `styles/photo.md`，`二次元` 走 `styles/anime.md`，`通用` 两条通道都成立；混合画面需要跨通道取词时，先读 `styles/hybrid.md` 的三问再回来挑行。颜料、纸张、印刷类词在纯写实通道会把照片拉成画作（在媒介叠合里则是主线）。
-
+要指定**光位、色彩关系、画种技法、风格流派、材质氛围**时读本文件；只缺镜头或版式时读 `camera.md` / `composition.md`。官方 caption 规范要求逐项描述 `colors`、`lighting`、`artistic style` 三个维度且只写图上可见信息，落在这三个维度里的词（`loop lighting`、`teal-and-orange`、`cel shading`）像素对应稳定；作者名、品牌名、软件名、渲染引擎名单写无效。
+「可抄英文短语」是起始写法，替换主体与方位即可。通道列：`写实` 走 `styles/photo.md`，`二次元` 走 `styles/anime.md`，`通用` 两条通道都成立；混合画面先读 `styles/hybrid.md` 的三问再回来挑行。
 ## 1. 光位分工
-
-光影词的效力来自同时指定三件事：**方向**（投影往哪倒）、**硬软**（边缘过渡宽度）、**明暗比**（暗部还剩多少信息）。只写「亮/暗」不指定这三件等于没写。
-
+一条光只写一个主控。同句出现两个方向相反的主光（`window light from the left` + `hard spotlight from behind`）会被平均成平光；要多层就写明每层负责哪个部位。
 | 中文 | English | 可抄英文短语 | 可见结果 | 通道 |
 | :--- | :--- | :--- | :--- | :--- |
 | 主光 | key light | `a single strong key light from the upper left` | 定投影方向与暗部位置，其余光只提亮不改几何 | 通用 |
@@ -24,10 +19,8 @@
 | 硬光 | hard light | `hard direct sunlight, crisp-edged shadows with a sharp boundary` | 投影边缘锐利、明暗交界线清楚 | 通用 |
 | 柔光 | soft light | `large soft source, shadow edges fully diffused, no hard terminator` | 明暗过渡宽，找不到交界线 | 通用 |
 
-一条光只写一个主控。同句出现两个方向相反的主光（`window light from the left` + `hard spotlight from behind`）会被平均成平光；要多层就写明每层负责哪个部位。
-
 ## 2. 六式人像布光
-
+二次元通道里光位词收益有限，更吃「色片 + 硬软过渡」，要写成可见形状：`a hard-edged shadow dividing the face in half`。【需核】宽光显宽、窄光显窄的复现稳定性取决于训练图分布，长期使用前同 seed 做一次 A/B。
 | 中文 | English | 可抄英文短语 | 可见结果 | 通道 |
 | :--- | :--- | :--- | :--- | :--- |
 | 伦勃朗光 | Rembrandt lighting | `Rembrandt lighting, a small triangle of light on the shadow-side cheek below the eye` | 暗侧脸颊一块倒三角亮区，鼻影与颊影相连 | 写实 |
@@ -37,11 +30,8 @@
 | 宽光 | broad lighting | `broad lighting, the side of the face turned to camera is the lit side` | 脸显宽、显亲和，受光面积占面部比例更大 | 写实 |
 | 窄光 | narrow lighting | `narrow lighting, only the far cheek is lit, the near cheek in shadow` | 脸显窄、下颌线更利，暗部压缩轮廓 | 写实 |
 
-二次元通道里光位词收益有限，更吃「色片 + 硬软过渡」；要在二次元用光位，就把它写成可见形状：`a hard-edged shadow dividing the face in half`。
-【需核】宽光显宽、窄光显窄是摄影教学的通行说法，模型是否稳定复现取决于训练图分布，长期使用前建议同 seed 做一次 A/B。
-
 ## 3. 明暗比与风格化光影
-
+`high-key` 与 `low-key`、`chiaroscuro` 与 `flat overcast daylight` 不能同框，同时出现会被平均成中间调。写 `low-key` 时就删掉一切提亮词（`bright`、`luminous`、`glowing`、`fair porcelain skin`、`daylight`）——删冲突词比补 `very dark` 有效。
 | 中文 | English | 可抄英文短语 | 可见结果 | 通道 |
 | :--- | :--- | :--- | :--- | :--- |
 | 高调 | high-key | `high-key lighting, near-white background, almost no shadow on the face, milky lifted blacks` | 全图明亮、暗部极浅、对比低 | 通用 |
@@ -52,10 +42,8 @@
 | 环境遮蔽 | ambient occlusion | `soft ambient occlusion in every corner and fold, grounded shadows` | 角落、褶皱、缝隙自然变暗，物体不再浮在环境里 | 写实 |
 | 光线衰减 | light falloff | `steep light falloff, the far wall already fallen into black` | 离光源越远越暗，衰减幅度一眼可见 | 通用 |
 
-`high-key` 与 `low-key`、`chiaroscuro` 与 `flat overcast daylight` 不能同框，同时出现会被平均成中间调。写 `low-key` 时就删掉一切提亮词（`bright`、`luminous`、`glowing`、`fair porcelain skin`、`daylight`）——删冲突词比补 `very dark` 有效。
-
 ## 4. 时间、色温与光源性质
-
+体积光**必须配介质**：只写 `volumetric lighting` 不写 `dust / fog / smoke / steam`，多半得到均匀柔光而不是光柱。双色色片必须写左右或前后（`left cheek` / `right cheek`），写成 `pink and blue light` 会随机分配甚至混成紫色。
 | 中文 | English | 可抄英文短语 | 可见结果 | 通道 |
 | :--- | :--- | :--- | :--- | :--- |
 | 棚拍闪光 | studio strobe | `bare studio strobe, hard specular hotspot on the forehead, sharp shadow on the backdrop` | 高光点小而亮、投影边缘硬 | 写实 |
@@ -71,12 +59,8 @@
 | 反弹光 | bounce light | `warm bounce light off the wooden floor filling the underside of the jaw` | 暗部带上反弹面的颜色与方向 | 写实 |
 | 空气尘雾 | haze / dust in the air | `thin dust haze in the air, the background losing contrast behind it` | 远处对比下降、亮部发灰、黑位抬高 | 通用 |
 
-体积光**必须配介质**：只写 `volumetric lighting` 不写 `dust / fog / smoke / steam`，多半得到均匀柔光而不是光柱。双色色片必须写左右或前后（`left cheek` / `right cheek`），写成 `pink and blue light` 会随机分配甚至混成紫色。
-
 ## 5. 色彩
-
-颜色由**色相 + 明度 + 饱和度 + 占比 + 位置**五件事决定。中文常只给色相（「蓝色调」），所以结果不稳；可写的完备形式是把后四项也写出来。下表按明度结构、色相关系、配色配方、肤色与环境色温四组排列。
-
+饱和度和明度必须成对写（只写 `pastel` 可能得到高明度高饱和的糖果色，只写 `desaturated` 可能得到脏灰），稳定式是 `high value, low chroma`；二次元肤色写 `skin tone variation` 会退化成脏斑，改用 `a soft cool tint along the shadow edge of the face`。
 | 中文 | English | 可抄英文短语 | 可见结果 | 通道 |
 | :--- | :--- | :--- | :--- | :--- |
 | 明度分层 | value structure | `a clear three-value structure: bright highlights, mid-tone skin, near-black background` | 缩略图状态也能认出主体轮廓 | 通用 |
@@ -105,13 +89,8 @@
 | 肤色分区 | skin tone variation | `warmer red at the nose and ears, cooler olive on the jaw, faint blue in the beard shadow` | 一张脸上多个色相，来自血管密度与角质厚度不均 | 写实 |
 | 白平衡错配 | white balance mismatch | `uncorrected white balance, warm tungsten skin against a daylight-blue window` | 同图两种色温并存 | 写实 |
 
-饱和度和明度必须成对写。只写 `pastel` 可能得到高明度高饱和的糖果色，只写 `desaturated` 可能得到脏灰；稳定式是 `high value, low chroma`。
-二次元肤色是单一平涂色块，写 `skin tone variation` 会退化成脏斑；只保留环境染色并限定范围：`a soft cool tint along the shadow edge of the face`。
-
 ## 6. 绘画与平面技法
-
-技法词在 caption 里等价于「**颜料厚度 + 边缘硬度 + 是否留纸纹 + 是否有线**」四件事的组合。技法名只是索引，生效的是这四件；最稳的写法是「技法名 + 两到三个可见证据」。
-
+技法词的冲突：`impasto` / `gouache` / `watercolor` 与 `black outlines`、`lineart` 天然对立，同框退化成不存在的画种；`cel shading` 与 `soft shading` 必须二选一，同写得到半硬半软的糊面；`screentone` 只配 `monochrome / greyscale`，带彩色会局部留色。写实通道里出现任何颜料词都会把照片拉成画，要质感改用 §8。
 | 中文 | English | 可抄英文短语 | 可见结果 | 通道 |
 | :--- | :--- | :--- | :--- | :--- |
 | 厚涂 | impasto | `heavy impasto, thick ridges of oil paint catching the light, visible bristle marks` | 颜料有立体凹凸，脊线带真实高光与投影 | 二次元 |
@@ -134,10 +113,7 @@
 | 墨线轮廓 | inked contour | `bold black ink outlines of even width around every shape` | 每个形状都有等宽黑边 | 二次元 |
 | 铅笔草稿 | pencil sketch | `rough graphite sketch, visible construction lines and eraser smudges` | 辅助线、灰污、未擦线都被保留 | 二次元 |
 
-技法词的冲突：`impasto` / `gouache` / `watercolor` 与 `black outlines`、`lineart` 天然对立，同框退化成不存在的画种；`cel shading` 与 `soft shading` 必须二选一，同写得到半硬半软的糊面；`screentone` 只配 `monochrome / greyscale`，带彩色会局部留色。写实通道里出现任何颜料词都会把照片拉成画，要质感改用 §8。
-
 ## 7. 风格与流派
-
 | 中文 | English | 可抄英文短语 | 可见结果（三个特征） | 通道 |
 | :--- | :--- | :--- | :--- | :--- |
 | 巴洛克 | Baroque | `Baroque oil painting, dramatic single-source light, diagonal composition, heavy warm brown shadows` | ①大面积深褐暗部加一束强侧光 ②对角线或旋涡构图 ③厚重织物与肉体的暖褐调 | 写实 |
@@ -152,20 +128,14 @@
 | 太阳朋克 | solarpunk | `solarpunk, dense greenery growing over white architecture, bright high-key daylight, stained-glass mosaic panels` | ①建筑与植物共生 ②高调明亮日光 ③白与浅木加彩色玻璃拼贴 | 通用 |
 | 中世纪现代 | mid-century modern | `mid-century modern illustration, flat geometric shapes, mustard teal and brick red, slight paper grain` | ①扁平几何加有机形 ②有限复古配色 ③轻微纸纹与套色偏移 | 二次元 |
 | 黑色电影 | film noir | `film noir still, high-contrast black and white, venetian blind shadows across the wall, low camera angle` | ①高反差黑白 ②百叶窗格栅硬投影 ③低机位与倾斜构图 | 写实 |
-
 ### 7.1 流派名与可见特征：两者都成立，判据在词锁定了什么
-
-- 锁定**工艺与材料**的词——`gouache`、`ukiyo-e`、`risograph`、`cel shading`、`impasto`——放在提示词开头就能切换整图美术方向。它在 `artistic style` 维度里对应唯一的像素工艺（纸纹、网点、平涂、笔触厚度），单写有效，仍建议补一条可见证据。
-- 锁定**时代、题材与构图习惯**的词——`Baroque`、`Bauhaus`、`Art Nouveau`、`vaporwave`——名字指向作品集合的模糊中心，同一个词展开后可以差出教堂、海报、家具。这类必须配三个可见特征，否则交回的是集合的平均值。
-- 判断方法：把流派名删掉，剩下的句子若仍能推出你要的画面，名字可以省；若删掉后画面不可控，说明名字在替你猜，应换成特征。
+- 锁定**工艺与材料**的词——`gouache`、`ukiyo-e`、`risograph`、`cel shading`、`impasto`——放在提示词开头就能切换整图美术方向，它在 `artistic style` 维度里对应唯一的像素工艺（纸纹、网点、平涂、笔触厚度），单写有效，仍建议补一条可见证据；锁定**时代、题材与构图习惯**的词——`Baroque`、`Bauhaus`、`Art Nouveau`、`vaporwave`——名字指向作品集合的模糊中心，展开后可以差出教堂、海报、家具，必须配三个可见特征，否则交回的是集合的平均值。
 - 流派名会带出无关经典元素：`film noir` 自带雨夜街道与烟，`Bauhaus` 可能交一张海报而不是场景；只借其中一项时直接写那一项。两个流派名并列还会互相稀释，两组特征才能按比例叠加。
 - 推荐式：**流派名（一个）+ 三个可见特征 + 一个排除句**，例 `Art Nouveau poster, whiplash curves, flat muted sage and gold color fields, even-weight outlines, no photographic texture.`
 - 【需核】`brutalist`、`vaporwave`、`solarpunk`、`mid-century modern` 多义或跨媒介（建筑、平面、网页；音乐、视觉；文学运动、视觉风格），在 MOSS-Image 上的绑定强弱未实测。
 
 ## 8. 材质与质感
-
-材质的可见性来自三条光学线索：**高光形状**（镜面里看到什么）、**高光锐度**（粗糙度）、**透射与次表面**（光是否进入物体）。只写材质名不写这三条，只能得到教科书式的中等反光。
-
+两条实用规则：**高光形状等于光源形状**，写了 `a window reflected in the tabletop` 就意味着环境里必须有窗，否则自造矛盾光源；**写实的真实感主要靠不均匀**，`slight oil sheen on the forehead`、`uneven texture`、`a few water spots` 比 `ultra detailed texture` 有效得多。
 | 中文 | English | 可抄英文短语 | 可见结果 | 通道 |
 | :--- | :--- | :--- | :--- | :--- |
 | 次表面散射 | subsurface scattering | `subsurface scattering in the ears and fingertips, a warm red glow through the thin edges` | 耳廓、鼻翼、指缝透出红色半透明 | 写实 |
@@ -184,12 +154,7 @@
 | 磨损 | worn and scratched | `scratched paint with the metal showing through at the edges, chipped corners` | 掉漆露底材，磨损集中在受摩擦处 | 通用 |
 | 半透明 | translucency | `translucent rice paper glowing from behind, the silhouette of the hand visible through it` | 背光透出后方形状 | 通用 |
 
-两条实用规则：**高光形状等于光源形状**，写了 `a window reflected in the tabletop` 就意味着环境里必须有窗，否则自造矛盾光源；**写实的真实感主要靠不均匀**，`slight oil sheen on the forehead`、`uneven texture`、`a few water spots` 比 `ultra detailed texture` 有效得多。
-
 ## 9. 情绪词拆成可见描述
-
-情绪是观众反应，不是画面属性。可写的只有四个旋钮：**明暗比**、**色温与色盘**、**画面密度**、**留白与主体占比**。
-
 | 中文 | English | 可抄英文短语 | 可见结果（四个旋钮） | 通道 |
 | :--- | :--- | :--- | :--- | :--- |
 | 治愈 | healing | `soft high-key morning light, pale cream and mint palette, generous empty space around her, nothing sharp in frame` | 高调近乎无影；暖白加淡青绿、高明度低彩度；中等密度；四周留呼吸空间、无锐角 | 通用 |
@@ -204,9 +169,6 @@
 别写 `healing`、`lonely`、`oppressive`、`emotional atmosphere` 当画面描述——它们不在标注规范要求的可见信息里，只会被当成风格词借用某个常见模板。上表的 English 列只是索引，抄短语列才是内容。
 
 ## 10. 空转词与替代写法
-
-判断标准：把词删掉，如果画面没有可预期的变化，它就是空转词——占词预算但不增加信息。
-
 | 中文 | English | 可抄英文短语 | 可见结果 | 通道 |
 | :--- | :--- | :--- | :--- | :--- |
 | 电影感 | cinematic | `anamorphic widescreen framing, teal-and-orange grade, oval bokeh, horizontal flare streak` | 从「像电影」落到画幅、调色、散景形状与眩光方向 | 写实 |
@@ -225,7 +187,6 @@
 | 作者风格 | by [artist name] | 该作者的三个可见特征：笔触、配色、构图 | 作者名不在可见信息内，且会把多种风格混成一锅 | 二次元 |
 
 ## 11. 美学组合配方
-
 - **写实 · 低调 + 冷暖分离 + 湿面反射**：`low-key window light from camera left, deep teal shadows against warm amber skin, one narrow shaft of dusty air catching the light, the lacquered tabletop mirroring the window with a thin specular edge along the cup, real shadow falloff and no flat front fill.` → 夜景室内人像、静物、产品近景。
 - **写实 · 黄金时刻逆光 + 大气透视**：`golden hour backlight with long shadows raking across the ground, warm amber rim on the hair, distant hills washed out to pale blue-grey, thin dust haze softening the light sources.` → 户外黄昏、公路、田野、背影。
 - **二次元 · 水粉厚涂 + 限色 + 疏密分级**：`opaque matte gouache on rough cold-press paper, chalky dry surface with visible brush ridges, palette strictly limited to dusty blue, warm cream, sage and rust, even-weight contours, fine detail reserved for the face and left loose elsewhere, no photographic texture.` → 轻小说封面、角色半身、插画海报。

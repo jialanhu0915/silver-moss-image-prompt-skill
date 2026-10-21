@@ -28,7 +28,7 @@ nsfw, worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus
 
 | 处理 | 依据 |
 | :--- | :--- |
-| 第一句就是光源与镜头 | 前置光线给全图定色温（`core/caption.md` §2.1） |
+| 第一句就是光源与镜头 | 前置光线给全图定色温（`core/caption.md` §1） |
 | 写「湿发成缕」而不是 `wet hair` | 可见结果是「成缕、发暗、反光锐利」（`craft/aesthetics.md` §8） |
 | 前景塑料袋虚化，占左下角 | 三层空间各给一个角色（`craft/composition.md` §3） |
 | 「双手抱纸袋」写成静态结果 | 避免进行时动词多吃一只手（`styles/photo.md` §6） |
@@ -76,9 +76,3 @@ nsfw, worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus
 **自检**：光源在主体前 ✓；暗部三处（脸/胸/手）写明 ✓；负面含 `pale white skin, studio fill light` ✓；无 `cinematic` ✓；档位标注清楚 ✓。
 
 ---
-
-## 这两例示范的三个共同点
-
-1. **第一句永远不是主体**，是光线与镜头。
-2. **每个形容词都能落到具体部位**（发丝、下颌、桌面、水洼），没有 `beautiful, professional` 这类词。
-3. **负面词与通道互斥**：写实图里绝不出现 `photorealistic`，也不把二次元封杀组和写实封杀组混着塞。

@@ -1,134 +1,76 @@
-# Caption：正面提示词怎么写
+# Caption：正面提示词
 
-MOSS-Image 的正面提示词主体是一段**散文**，不是 tag 堆。官方支持 tag 串（有固定排序建议），但 tag 串只是另一种输入形式，本 skill 默认用散文，因为散文能承载关系、动作、空间，而 tag 堆不能。
+主体是一段散文，不是 tag 堆。模型见的 caption 由 VLM 重写，顺序是**构图 → 主体 → 动作 → 场景 → 颜色 → 光线 → 画风**，且只写可见信息。照此顺序写最省力。
 
-## 1. 数据从哪来（决定了什么词有效）
+## 1. 语序
 
-官方的标注流程是：用 VLM（推荐 Gemma 4 / Qwen 3.5 27B / Qwen 3.5 35B-A3B）把训练图重新写成 caption，规范原文要求：
+`光线与色温 → 媒介与镜头 → 主体 → 动作与关系 → 场景 → 材质收尾`
 
-- `Describe the composition, key subjects, actions, setting, colors, lighting, and artistic style in detail.`
-- `Include only information visible in the image.`
+- 光源写在句尾等于没写：先写「白衬衫」，末尾补「只有顶上绿灯管」，得到的仍是暖白平光。把光源提前，后面的皮肤衣服才被染色。
+- 多主体：主角色放第一段定调；次角色句首写反向特征切断继承——`In sharp contrast, the girl on the right wears NO glasses and has spotless skin with zero freckles`。
+- 分段用自然换行，一段一话题（光线 / 主体 / 场景 / 文字）。`<|xxx|>` 闭合标签不在官方文档里，要用先自测。
 
-也就是说，模型见惯的 caption 是「**构图 → 主体 → 动作 → 场景 → 颜色 → 光线 → 画风**」这个顺序、且**只描述可见内容**的散文。由这个事实推出两条硬性写法：
+## 2. 长度
 
-1. 顺序照抄上面那个顺序写，最贴训练分布（见 §2）。
-2. 不可见的信息（相机型号、渲染引擎、软件名、作者名）不在 caption 分布里，单独写基本没有效果；要写它们对应的**可见结果**（见 `diagnostics/sources.md`）。
-
-## 2. 语序契约
-
-文本编码器是 Qwen3.5-9B，**从左到右读**。前面写下的词给整段定调，后面才补的词很难覆盖前面。
-
-### 2.1 推荐顺序
-
-```text
-光线与色温 → 媒介与镜头 → 主体（年龄/骨相/发色/表情/服饰） → 动作与接触关系 → 场景与背景 → 材质与收尾
-```
-
-**最常见的错误是把光源写在句尾。**「白衬衫」先写完，末尾才补「只有顶上一根绿灯管」——模型会把绿灯管画出来，衬衫依旧是暖白平光。把绿灯与暗室写在句首，后面的衬衫和皮肤才会被染上色。
-
-### 2.2 多主体排序
-
-- 第一个描述的主体给整图定调（人种、年龄、画风、主色温），**把主要角色放第一段**。
-- 第二段起，句首直接写反向特征切断继承：`In sharp contrast, the girl on the right wears NO glasses, has spotless skin with zero freckles...`
-- 更细的多人分区写法见各风格文件。
-
-### 2.3 段落与分隔
-
-- 默认用自然语言分段（真实换行），每段一个话题：光线、主体、场景、文字。
-- `<|xxx|>...<|/xxx|>` 这类闭合标签**不在官方文档里**，属社区写法。它可能借 Qwen 聊天模板的 `|<|` 定界符习惯起作用，但官方未确认。要用就先自己 A/B 一次，有效再用；不要当成默认。
-- 不要用 `[Image Composition]`、`### 人物` 这类 Markdown 标题当分隔，模型对它们的反应远不如一句自然的方位句。
-
-## 3. 长度
-
-| 档 | 词量 | 适用 |
+| 档 | 词量 | 场景 |
 | :--- | :--- | :--- |
-| 短 | 20~50 词 | 单一物体、极简需求、用户明确说要简单 |
-| 中 | 60~140 词 | 单人像、单场景插画的默认档 |
-| 长 | 150~300 词 | 多人、复杂空间、图内大量文字、Layout 前身 |
+| 短 | 20~50 | 单物体、极简需求 |
+| 中 | 60~140 | 单人像、单场景（默认） |
+| 长 | 150~300 | 多人、复杂空间、大量图内文字 |
 
-规则：
+不按长度凑词。用户说极简，就写极简；短提示词把 CFG 调高一点。
 
-- **不要为了长度加词。**官方 enhancer 原文：`Avoid redundant quality tags, unrequested style changes, arbitrary word budgets`。用户说「极简」，就写极简。
-- 上限约 4K tokens，正常使用碰不到的。
-- 短提示词要把 CFG 调高一点（官方：`常规长 Prompt 用 3.0 即可; 短 Prompt 建议适当调高`）。
+## 3. 语言
 
-## 4. 语言
+默认英文（训练量最大）。中文适用于：用户要求中文、图内要大段中文、题材本身是中式物件。一条提示词里同一事不要中英各写一遍。
 
-- 官方推荐英文（训练量最多），中文也支持。
-- 默认：**英文正文**；英文提示词在解剖、光线、材质上的词汇粒度明显更细。
-- 例外用中文：① 用户明确要中文；② 画面里要渲染大段中文，让「要显示的文字」和描述语同语言省事；③ 中文特有的东西（书法、印章、中式器物命名）直接用中文更准。
-- 混排可以，但一条提示词里别又在同一件事上中英各写一遍——重复不加强，只占 token。
-
-## 5. 可抄骨架
+## 4. 骨架
 
 ```text
-[光照与色温句]. [媒介与镜头句].
-[主体：年龄 + 骨相 + 发色与发质 + 表情 + 服饰 + 配饰].
-[动作：静态结果，写「已经处于什么状态」而不是「正在做某个动作」].
+[光照与色温]. [媒介与镜头].
+[主体：年龄 + 骨相 + 发色发质 + 表情 + 服饰 + 配饰].
+[动作：静态结果，如 shirt already pushed up，不要 pulling up her shirt].
 [场景：位置 + 材质 + 背景层次].
-[收尾：皮肤/材质/颗粒等质感句].
+[收尾：皮肤 / 材质 / 颗粒].
 ```
 
-「静态结果」这条在多主体与衣物互动时尤其重要：写 `shirt already pushed up, hem already lifted` 而不是 `pulling up her shirt`——后者要占两只手，模型很容易多长一只手。
+进行时动词要占手，模型会为此多画一只手；静态结果只摆姿势。
 
-## 6. 反模式
+## 5. 反模式
 
-| 别写 | 为什么 | 改成 |
-| :--- | :--- | :--- |
-| `masterpiece, best quality, 8k, ultra detailed, trending on artstation` | 空转，不在 caption 分布里 | 写具体的质感与笔触 |
-| 相机/引擎/软件型号 | 不可见信息 | 写对应的可见结果 |
-| `very beautiful, nice lighting` | 无信息量 | `single warm beam from the back-left, deep shadow on the front` |
-| `[填入角色名]` 之类占位符 | 交付物不完整 | 要么写具体内容，要么删掉这一项 |
-| 把 JSON、bbox、坐标写进 caption | 工具说明不是画面内容 | 放到提示词外面 |
-| 同一特征用中英各写一遍 | 浪费 token | 只留一种语言 |
+| 别写 | 改成 |
+| :--- | :--- |
+| `masterpiece, best quality, 8k, ultra detailed` | 具体质感与笔触 |
+| 相机/引擎/软件型号单独写 | 它造成的可见结果 |
+| `beautiful, nice lighting` | `one warm beam from the back-left, deep shadow on the front` |
+| `[填入角色名]` 之类占位符 | 写具体内容或删掉该项 |
+| caption 里写 bbox、JSON、坐标 | 移到提示词外面 |
 
-## 7. 从用户的模糊需求到成稿（示例）
+## 6. tag 串
 
-用户说：「来个在便利店门口的女生，夜雨。」
+官方顺序：`Quality -> Score -> Meta -> Year -> Character -> Series -> Artist -> General`，示例 `best quality, highres, hatsune miku, vocaloid, @foo bar, 1girl, blue hair`。
 
-```text
-Cool blue-white fluorescent light spilling from a convenience store window onto wet asphalt, 85mm lens at eye level, shallow depth of field with bokeh from the store sign.
-A slender 20-year-old East Asian woman in a soaked oversized grey hoodie and black shorts stands under the awning just outside the glass door, wet strands of black hair stuck to her cheek, hugging a paper bag to her chest, looking off to her left with an exhausted half-smile.
-Behind her the glass door reflects rows of shelves and a faint green price tag; a wet plastic bag drifts in a puddle in the near foreground.
-Rain droplets caught in the harsh fluorescent light, realistic wet skin highlights, natural fabric folds, muted teal-and-amber night palette.
-```
+清洗：留角色名（`lillie (pokemon)`）；删版权大词（`pokemon`、`nintendo`，易出假发感，【社区】未对照）；删 `censored / mosaic censoring / watermark`；纯色背景换具体场景与光向。
 
-第一句先把蓝白光与湿沥青写死；第二句才是主体；第三句补足空间关系；末句收质感。
+禁止：SD 系权重语法 `(masterpiece:1.2)`、`[a:b:0.5]`——本模型没有这个机制。逗号硬串长句会丢关系，需要动作与空间时改散文。
 
-## 8. tag 串：另一种输入形式
-
-官方支持三种输入：自然语言、tag 串、JSON Layout。本 skill 默认用散文，但用户直接丢来一堆 Danbooru tag 时，tag 串反而是更省事的载体——它不擅长表达关系与动作，但擅长列举属性。
-
-### 8.1 官方 tag 顺序
-
-```text
-Quality -> Score -> Meta -> Year -> Character -> Series -> Artist -> General
-```
-
-官方示例：`best quality, highres, hatsune miku, vocaloid, @foo bar, 1girl, blue hair`
-
-照这个顺序排，不要自己按重要性重排。`@` 前缀用来标画师，是官方示例里的写法。
-
-### 8.2 清一条 tag 串的步骤
-
-1. **留角色名**：`lillie (pokemon)`、`higuchi madoka` 这类保留，它们携带发型与神态特征。
-2. **删版权大词**：`pokemon`、`nintendo` 这类会把画面推向真人 cos 的假发质感（社区经验，未做对照，标【社区】）。
-3. **删打码与元标记**：`censored`、`mosaic censoring`、`watermark`、`sample watermark`。
-4. **删纯色背景**：`white background`、`simple background` 换成具体场景与光照方向；除非用户就是要棚拍纯色。
-5. **补关系与光线**：tag 串里通常没有「谁在前谁在后」「光从哪来」，用一句话散文补在 tag 串前后，官方允许混写。
-
-### 8.3 不要把 tag 串当散文用
-
-- 不要写权重语法（`(masterpiece:1.2)`、`[a:b:0.5]`）——那是 SD 系 WebUI 的语法，MOSS-Image 没有这个机制。
-- 不要用逗号硬串出长句（`girl, sitting, window, rain, looking, sad, hair, wet`）——关系丢失，模型只能按位置猜。
-- 需要动作关系、空间层次、镜头感时，改用散文，见 §2。
-
-### 8.4 混合写法
-
-tag 串适合放在最前做属性清单，散文跟在后边讲空间与光线：
+混写：tag 打头做属性清单，散文随后讲空间与光线。
 
 ```text
 best quality, highres, 1girl, silver hair, red eyes, black coat, city street, night.
 Cool blue neon from the shopfronts falls on her left side, 35mm at eye level, shallow depth of field.
 She stands with her back to a shuttered storefront, looking toward the camera over one shoulder.
 ```
+
+## 7. 示例
+
+「便利店门口的女生，夜雨」：
+
+```text
+Cool blue-white fluorescent light spilling from a store window onto wet asphalt, 35mm at eye level, shallow depth of field.
+A slender 20-year-old East Asian woman in a soaked oversized grey hoodie stands under the awning just outside the glass door, wet hair clumped into dark strands on her cheek, hugging a paper bag with both hands, looking off to her left with an exhausted half-smile.
+Behind her the glass door reflects shelves and a green price tag; a wet plastic bag drifts in a puddle in the near foreground.
+Rain droplets caught in the fluorescent light, realistic wet skin highlights, muted teal-and-amber palette.
+```
+
+第一句锁光线与湿沥青，第二句才给主体，第三句补空间，末句收质感。

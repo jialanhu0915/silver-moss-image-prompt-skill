@@ -1,13 +1,8 @@
 # 镜头：焦距、景别、机位、景深、画幅
-
-想指定镜头感觉、焦距长短、景别与切点、机位高度与角度、谁站在谁的视角里、景深与焦外形状、画幅比例，或某种拍摄器材自带的画面痕迹时，查这里。与风格文件并列使用：写实通道见 `styles/photo.md`，二次元通道同样只挑需要的行。
-
-总规则：**术语必须先翻译成可指认的可见事实**才写进提示词。`85mm`、`f/1.4`、机身型号都是画面外信息，模型在 caption 里见不到它们；`her face sharp while the string lights behind her melt into soft round orbs` 是画面内信息。判断标准只有一句：写完这个镜头词，能不能指出「画面哪一块区域发生了什么变化」——指不出来就删掉，换成结果句。型号与数字不是禁用，但必须同句配至少三个可见结果，否则删型号、留结果。
+查镜头感觉、焦距长短、景别与切点、机位角度、谁在看谁的视角、景深与焦外形状、画幅比例、器材痕迹。**术语必须先翻译成可指认的可见事实**：`85mm`、`f/1.4`、机身型号都是画面外信息，`her face sharp while the string lights behind her melt into soft round orbs` 是画面内信息；写完这个镜头词指不出「画面哪一块区域变了」就删掉换成结果句，型号必须同句配至少三个可见结果。写实通道见 `styles/photo.md`，二次元同样只挑需要的行。
 
 ## 1. 焦距与透视压缩
-
-焦距要成立必须写全三件事：主体占画幅多少、背景被拉近还是推远、背景清不清晰。只给数字，模型给回一张普通浅景深人像。
-
+焦距要成立必须写全三件事：主体占画幅多少、背景被拉近还是推远、背景清不清晰。
 | 中文 | English | 可直接抄进提示词的英文短语 | 它改变画面的哪一部分 |
 | :--- | :--- | :--- | :--- |
 | 超广角 | ultra-wide | `ultra-wide view, the walls bowing outward at the frame edges, the near corner of the table huge and the far wall tiny` | 四角拉伸、直线外凸、近物暴涨 |
@@ -22,12 +17,8 @@
 | 长焦压缩的证据 | background stacking | `the row of parked cars behind her stacked flat and overlapping instead of receding, the far mountain sitting right on her shoulder` | 远物层叠、远近关系被消除 |
 | 仰角广角汇聚 | keystone | `wide lens tilted up, the building's vertical lines converging sharply toward the top of the frame` | 竖向线条向顶部汇聚、上部收窄 |
 
-**机制**：近大远小是**机位距离**造成的，广角只是把它装进画幅；压缩是**远物在画幅中相对变大**造成的。所以两种焦距的证据都写在「近物尺寸比」和「远物是否层叠」上，不在镜头名上。一条提示词只留一个焦距数字，且紧跟它的可见结果。
-
 ## 2. 景别与切点
-
-景别真正控制的是**画幅里能容纳几个信息单元**，模型靠占比决定细化哪一层（脸 / 手 / 布料 / 环境）。切点是可见事实，景别名只是行业缩写，两个都写才稳。
-
+景别控制的是**画幅里能容纳几个信息单元**；切点是可见事实，景别名只是行业缩写，两个都写才稳。
 | 中文 | English | 可直接抄进提示词的英文短语 | 它改变画面的哪一部分 |
 | :--- | :--- | :--- | :--- |
 | 大远景 | extreme wide shot | `extreme wide shot, the figure reduced to a small dark silhouette in the lower third, the landscape dominating the frame` | 环境占满画幅、人退成剪影 |
@@ -47,9 +38,7 @@
 **跨景别冲突**：`close-up` + `both hands visible` + `full outfit` 同现会被拉成中景、脸变最小。删到只剩一个景别主体。
 
 ## 3. 机位高度与角度
-
 角度名信息量低，可靠的是**地平线落在画幅哪里 + 谁的头顶更高 + 关节位置**。
-
 | 中文 | English | 可直接抄进提示词的英文短语 | 它改变画面的哪一部分 |
 | :--- | :--- | :--- | :--- |
 | 平视 | eye level | `camera at the subject's eye level, the horizon line crossing at her eyes` | 地平线穿眼、比例无变形 |
@@ -62,12 +51,10 @@
 | 荷兰角 | dutch angle | `dutch angle, the horizon tilted about fifteen degrees, the vertical lines of the doorway leaning` | 全部竖线倾斜、地平线切过画面 |
 | 地平线定位 | horizon placement | `the horizon line sits at her chest, she fills the upper two thirds` | 主体与环境的面积分配 |
 
-**坐姿 / 蹲姿配高角度**会把大腿压到消失，得到上半身直接接脚。补丁：写明关节 `both knees bent sharply, thighs horizontal, calves vertical, feet flat`，负面加 `missing thighs, fused legs`。
+**坐姿 / 蹲姿配高角度**会把大腿压到消失。补丁：写明关节 `both knees bent sharply, thighs horizontal, calves vertical, feet flat`，负面加 `missing thighs, fused legs`。
 
 ## 4. 机位关系（观众与人物、人物与人物）
-
-模型对「谁在看谁」的理解来自**视线方向 + 谁被遮挡**。关系镜头的可见证据就是画幅边缘的前景遮挡物。
-
+「谁在看谁」靠**视线方向 + 谁被遮挡**；关系镜头的可见证据就是画幅边缘的前景遮挡物。
 | 中文 | English | 可直接抄进提示词的英文短语 | 它改变画面的哪一部分 |
 | :--- | :--- | :--- | :--- |
 | 过肩 | over-the-shoulder | `over-the-shoulder shot, the out-of-focus back of a man's head and shoulder filling the left foreground, her face sharp beyond it` | 左／右下角被前景头肩占住并虚化 |
@@ -84,9 +71,6 @@
 **写法要点**：OTS 不写「虚化」会得到两个清晰后脑勺；不写左右会随机；`reverse shot` 在单图里只能写成「同一空间的反向视角」，写「剪辑」无意义。
 
 ## 5. 景深、焦平面与光斑形状
-
-`bokeh` 单独出现时模型常把整图糊掉。有效写法永远是「A 锐 + B 虚」——虚实边界本身是可见信息，模型必须解出一个焦平面。光斑形状同理：写形状，不写叶片数字。
-
 | 中文 | English | 可直接抄进提示词的英文短语 | 它改变画面的哪一部分 |
 | :--- | :--- | :--- | :--- |
 | 浅景深 | shallow depth of field | `shallow depth of field, only her eyes and lashes are sharp, her ear and the wall behind already soft` | 锐度收窄到一小块、前后同时化开 |
@@ -103,12 +87,10 @@
 | 柔和落差 | smooth focus falloff | `smooth focus falloff, no hard transition between sharp and blurred` | 虚实过渡拉长、无明显分界线 |
 | 分裂屈光度 | split diopter | `split-diopter shot: the near profile on the left and the far figure on the right both sharp, the middle of the frame blurred` | 两个不连续焦平面共存、画幅中部糊【需核：可能被解成糊块】 |
 
-**互斥**：`shallow depth of field` 与 `environment everywhere readable` 互斥；`deep focus` 与 `creamy bokeh` 互斥。两者同写会得到「人脸清楚、背景半糊」的中间态。
+**互斥**：`shallow depth of field` 与 `environment everywhere readable` 互斥；`deep focus` 与 `creamy bokeh` 互斥。
 
 ## 6. 镜头缺陷
-
-缺陷是光学不完美的可见痕迹，**必须与拍摄条件配对**：没有强光源却写眩光，模型会凭空造一个光源，构图被破坏。
-
+缺陷**必须与拍摄条件配对**：没有强光源却写眩光，模型会凭空造一个光源。
 | 中文 | English | 可直接抄进提示词的英文短语 | 它改变画面的哪一部分 |
 | :--- | :--- | :--- | :--- |
 | 暗角 | vignette | `dark corner vignette, the four corners falling off into black` | 四角压暗、中心相对变亮 |
@@ -130,9 +112,7 @@
 **注意**：`heavy vignette` 会整图压黑；`strong chromatic aberration` 会给整张脸描紫边；`noise` 单词单写常变成全图脏。缺陷词一条只留一个，且写清落点。
 
 ## 7. 画幅比例与画幅感
-
-画幅首先由输出分辨率（`core/params.md` 的 W×H）决定，正文里的比例词只是加固。文字真正能影响的是**构图分配**：主体靠哪一侧、留白在哪、环境在上还是在下。
-
+画幅先由输出分辨率（`core/params.md` 的 W×H）决定，正文比例词只是加固；真正能影响的是**构图分配**：主体靠哪一侧、留白在哪、环境在上还是在下。
 | 中文 | English | 可直接抄进提示词的英文短语 | 它改变画面的哪一部分 |
 | :--- | :--- | :--- | :--- |
 | 1:1 方幅 | square | `square composition, subject centered with equal margins` | 横向空间被砍掉、四周留白均等 |
@@ -148,9 +128,7 @@
 **反例**：9:16 里写「横向环境带」会得到上下大片空白；`tilt-shift` 必须配高机位，平视写移轴只得到普通虚化；`2.39:1` 与竖排文字、竖屏裁切不兼容。
 
 ## 8. 特殊机位
-
-这类机位自带可信度，因为把**拍摄条件的物理限制**画进了画面：固定支架 → 固定俯角，广角 → 畸变，廉价传感器 → 噪点与压缩痕，玻璃 → 反光。每条至少写两个限制痕迹，否则只得到一张普通照片。
-
+这类机位把**拍摄条件的物理限制**画进画面：固定俯角、广角畸变、廉价传感器噪点与压缩痕、玻璃反光。每条至少写两个限制痕迹，否则只得到一张普通照片。
 | 中文 | English | 可直接抄进提示词的英文短语 | 它改变画面的哪一部分 |
 | :--- | :--- | :--- | :--- |
 | 行车记录仪 | dashcam | `dashcam POV through the windshield, the dark dashboard and wiper blades along the bottom edge, slight wide-angle warp, low-light sensor noise` | 画幅下缘被仪表台与雨刮占住、两侧轻微外鼓 |
@@ -167,7 +145,6 @@
 **写法要点**：翻拍屏幕的三件套（像素网格 + 摩尔纹 + 反光）缺一个，就退化成「屏幕内容截图」；CCTV 的时间戳属于图内文字，能不能渲染先按 `core/text-in-image.md` 判断。
 
 ## 9. 常见误用
-
 | 别写 | 为什么掉质量 | 改成 |
 | :--- | :--- | :--- |
 | `cinematic` | 只把图拉向「青橙 + 宽画幅 + 压黑」的均值脸，常伴过饱和 | `teal shadows and warm amber skin, 2.39:1 scope framing, crushed blacks` |
@@ -190,7 +167,6 @@
 | `HDR`、`ray tracing`、`Unreal Engine` | 拉向 CG 塑料感 | 走胶片与皮肤纹理 |
 
 ## 10. 可直接抄的镜头句配方
-
 1. `35mm environmental portrait, she occupies about a third of the frame, the whole workshop legible around her, deep focus from the near bench to the far door.` —— 要交代环境又要看清人时用。
 2. `telephoto compression, the crowd behind her stacked into flat overlapping layers pressing against her shoulders, only her face sharp.` —— 人群里孤立一个人、要挤压感时用。
 3. `wide angle close in, her outstretched hand and the glass oversized in the lower frame, the alley receding small and steep behind.` —— 强调纵深与动势时用。
