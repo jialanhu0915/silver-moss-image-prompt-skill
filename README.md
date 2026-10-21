@@ -92,6 +92,8 @@ examples/
 - [OpenMOSS/MOSS-Image](https://github.com/OpenMOSS/MOSS-Image) — model, user guide, captioning spec, Layout schema (Apache-2.0). Attribution in [NOTICE.md](NOTICE.md).
 - The bilingual terminology tables and the principle that a term must be reduced to a visible fact are compiled from general photography, cinematography and illustration teaching.
 
+Release history is in [CHANGELOG.md](CHANGELOG.md).
+
 ## License
 
 [Apache License 2.0](LICENSE), matching upstream MOSS-Image. Commercial use, modification and redistribution are permitted, provided the copyright notice, the `LICENSE` file and the attribution in [NOTICE.md](NOTICE.md) are retained, and modified files are marked as changed. No warranty is given; the license includes an express patent grant.

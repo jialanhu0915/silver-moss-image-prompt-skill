@@ -92,6 +92,8 @@ examples/
 - [OpenMOSS/MOSS-Image](https://github.com/OpenMOSS/MOSS-Image)：模型、用户指南、标注规范与 Layout schema（Apache-2.0），署名见 [NOTICE.md](NOTICE.md)
 - 技法层的中英对照，以及「术语必须降维成可见事实」这一原则，整理自摄影、电影摄影与插画教学的通行内容
 
+变更记录见 [CHANGELOG.md](CHANGELOG.md)。
+
 ## 许可证
 
 [Apache License 2.0](LICENSE)，与上游 MOSS-Image 同协议。允许商用、修改与再分发；分发时需保留版权声明、`LICENSE` 与 [NOTICE.md](NOTICE.md) 中的署名，修改过的文件需标明改动。不提供担保，但包含明示的专利授权。
