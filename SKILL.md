@@ -88,7 +88,7 @@ nsfw, worst quality, bad anatomy, watermark, jpeg artifact, [L1], [L2 风格封�
 5. 负面的风格封杀组是否与所选通道一致（写实不带 `photorealistic`，二次元不带 `anime`）。
 6. 所用规则是否属于当前参数档。
 7. 有无 `masterpiece, 8k, ultra detailed` 这类空转词，或把相机型号、渲染引擎当画面效果写。
-9. 混合画面是否只写一套光，并写明谁接受谁的光、边界在哪。
+8. 混合画面是否只写一套光，并写明谁接受谁的光、边界在哪。
 
 这两档是本 skill 的预设组合，官方只给单项推荐值。
 
