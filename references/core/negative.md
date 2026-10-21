@@ -53,6 +53,16 @@ photorealistic, real human, photograph, live action, camera flash, film grain, m
 
 **这张表最容易出事**：把写实那套负面词粘进二次元提示词，画面会被硬推向照片；反之亦然。
 
+### 混合通道（`styles/hybrid.md`）
+
+混合画面**不能把两套 L2 都打开**：写实组里的 `anime, 2d, illustration` 会杀掉你要的 2D 角色，二次元组里的 `photorealistic, photograph` 会杀掉你要的实景。只封杀你不想要的第三态：
+
+```text
+white outline, sticker edge, cut-out edge, pasted-on look, style bleeding, gradient between styles, blended styles, plastic skin, toy figure
+```
+
+三渲二额外封 `photorealistic skin, subsurface scattering, glossy plastic`；同图双画风额外封 `half-colored, smeared transition`。
+
 ### L3 场景追加
 
 | 场景 | 追加 |

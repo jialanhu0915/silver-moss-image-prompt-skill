@@ -41,6 +41,7 @@ MOSS-Image 是 OpenMOSS 的文生图模型：Qwen3.5-9B 作文本编码器 → 4
 | :--- | :--- | :--- |
 | 真人、摄影、电影剧照、写实商品/场景 | `references/styles/photo.md` | `core/text-in-image.md`（有字） |
 | 二次元插画、动漫截图、Galgame、番剧、海报插画 | `references/styles/anime.md` | `core/text-in-image.md`（有字） |
+| 2D 角色放进真实场景、3D 结构 + 2D 描边、照片上手绘拼贴、同图两种画风 | `references/styles/hybrid.md` | 对应通道的 core 文件 |
 | 需要指定镜头、焦距、景别、机位 | `references/craft/camera.md` | 对应 style 文件 |
 | 需要指定版式、空间层次、留白、群体排布 | `references/craft/composition.md` | 对应 style 文件 |
 | 需要指定光位、色彩关系、画种流派、材质 | `references/craft/aesthetics.md` | 对应 style 文件 |
@@ -57,7 +58,7 @@ MOSS-Image 是 OpenMOSS 的文生图模型：Qwen3.5-9B 作文本编码器 → 4
 
 ## 3. 固定流程
 
-1. **判断通道**：写实（photo）还是二次元（anime）还是两者混合（先按主体占比定主语，另一侧作背景描述）。
+1. **判断通道**：写实（photo）、二次元（anime）、混合（hybrid）。混合不是各写一半，先定哪一层是主体、靠什么融合（光影 / 描边 / 调色 / 介质 / 分屏线）、边界在哪，见 `styles/hybrid.md` 的三问。
 2. **清需求**：抽出用户给的主体、数量、关系、媒介、风格、排除项、必须出现的文字。这些一项都不能丢。
 3. **补可见细节**：主体外观与动作 → 场景 → 光线与色温 → 镜头/景别 → 材质与氛围。只写眼睛能看见的东西。
 4. **定语序**：光线与色温在前，主体在中，服饰动作细节在后；多主体按「主角色先写、次角色句首写反向特征」排列。详见 `core/caption.md`。
@@ -100,6 +101,7 @@ nsfw, worst quality, bad anatomy, watermark, jpeg artifact, [L1 通用], [L2 风
 6. 参数档与规则档是否匹配（用了 `[R]` 档的补偿词却在跑档 Q）？
 7. 有没有出现 `masterpiece, best quality, 8k, ultra detailed` 这类空转质量词？
 8. 有没有把相机型号、渲染引擎名当成画面效果来写？（单写无效，见 `photo.md` / `anime.md`）
+9. 混合画面是否只写了一套光，并写清了「谁接受谁的光」与「边界在哪」？（见 `styles/hybrid.md` §7）
 
 ## 7. Layout 现状
 
