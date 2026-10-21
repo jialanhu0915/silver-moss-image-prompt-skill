@@ -3,9 +3,10 @@ name: silver-moss-image-prompt-skill
 description: >-
   Write and debug MOSS-Image prompts. Turn an idea, a reference description or a
   Danbooru tag dump into a caption-style positive/negative prompt plus sampling
-  settings, covering the photoreal and anime style channels, with in-image text
-  rendering, word-order rules, layered negatives and symptom-driven debugging.
-  适用于 MOSS-Image 提示词编写与排错、写实与二次元两条风格通道、图内文字渲染、负面词分层。
+  settings, covering three style channels — photoreal, anime and hybrid (2D-in-3D,
+  toon-shaded 3D, mixed media, split-style) — with in-image text rendering,
+  word-order rules, layered negatives and symptom-driven debugging.
+  适用于 MOSS-Image 提示词编写与排错、写实/二次元/混合三条风格通道、图内文字渲染、负面词分层。
   Use when the user mentions MOSS-Image / MOSS 出图 / moss-image, or wants image
   prompts written, rewritten or fixed for it.
 license: Apache-2.0
