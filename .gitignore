@@ -1,0 +1,9 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+
+# 本地实验产物（提示词草稿、出图对照记录）
+scratch/
+*.local.md
