@@ -26,7 +26,7 @@ A wide view of a refrigerator beside a kitchen counter with a fruit bowl. A smal
 
 放不下时的处理顺序：**① 提高分辨率 → ② 扩大区域 → ③ 精简文案**。**不许删掉用户要的字，也不许把字压扁**——压扁的字形会变成粘连的墨块。
 
-反例：40 个汉字塞进 200×100 的区域 → 字高 25px、每行 8 字 → 五行，实际上必崩。要么区域加到 400×250，要么把文案砍到 12 字。
+反例：40 个汉字塞进 200×100 的区域 → 字高 25px、每行 8 字，**需要 5 行，但 100px 高只放得下 4 行**（容量 32 字 < 40），根本装不下。要么区域加到 400×250，要么把文案砍到 12 字。
 
 ## 3. 竖排中文的坑
 
@@ -57,4 +57,4 @@ Clean horizontal Chinese text reading "¥720" printed on the price tag.
 
 ## 6. 与 Layout 的关系
 
-精确落位（海报、封面、表格）本该走 Layout 的 `label: "text"` + `text` + bbox，当前版本不稳定，默认走 caption：用**方位词 + 版面关系**近似控制，如 `a large title across the top third`、`a narrow vertical banner along the right edge`。真要像素级落位时读 `core/layout.md`，并接受可能要重试几次。
+精确落位（海报、封面、表格）本该走 Layout 的 `label: "text"` + `text` + bbox。官方把 Layout 标为**实验性**；本 skill 未做实测，默认走 caption：用**方位词 + 版面关系**近似控制，如 `a large title across the top third`、`a narrow vertical banner along the right edge`。真要像素级落位时读 `core/layout.md`。

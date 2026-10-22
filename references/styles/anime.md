@@ -15,10 +15,12 @@
 | 厚涂刮刀 | `impasto, oil painting (medium), heavy visible brushstrokes, thick palette knife texture, painterly lineless` | 删掉 `black outlines, lineart` |
 | 动画原画手稿 | `anime genga, production art, rough pencil sketch, uncolored layout sheet, blue and red construction lines on paper` | 删掉所有上色词 |
 | Q 版 | `chibi, super deformed, 2-head-tall proportions, oversized head, tiny body, bold outlines` | 删掉写实比例词（`7.5-head-tall` 之类） |
-| 浮世绘 / 日本画 | `ukiyo-e, traditional Japanese woodblock print, nihonga, flat mineral pigments on aged washi, sumi ink contours` | — |
+| 浮世绘 / 日本画 | `ukiyo-e, traditional Japanese woodblock print, nihonga, flat mineral pigments on aged washi, sumi ink contours` | 删掉 `volumetric light, gradient, airbrush, 3d render` |
 | PC-98 像素 | `pixel art, 16-bit PC-98 adventure game graphic, visible square pixel grid, checkerboard dithering, limited palette` | 删掉 `smooth, gradient` |
 | 无描边粉彩 | `lineless anime illustration, soft oil pastel on rough paper, no black outlines, grainy chalk texture` | 删掉 `lineart, ink` |
-| 水墨重彩 | `Chinese wild ink and wash painting, dry-brush sumi outlines with flying-white texture, splashed ink over mineral cinnabar and indigo on yellowed xuan paper` | — |
+| 水墨重彩 | `Chinese wild ink and wash painting, expressive dry-brush sumi calligraphy outlines with flying-white texture, splashed black ink mixed with traditional mineral pigments of cinnabar red and indigo on coarse yellowed xuan paper` | 删掉 `flat color, vector art, glossy, airbrush` |
+
+「必须同时做的删改」一列依据画种常识整理，【推断】，未在本模型验证。
 
 `[Q,R]` 画种词属于「开头词组」，两档都生效；但档 R 下笔触类细节（网点、像素格）更容易糊。
 
