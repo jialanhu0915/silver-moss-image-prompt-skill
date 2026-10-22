@@ -64,6 +64,7 @@ references/
 examples/
 ├── photo.md                        two photoreal walkthroughs
 └── anime.md                        two anime walkthroughs
+docs/decisions/                     decision records (ADR) and their index
 ```
 
 ## Three design decisions

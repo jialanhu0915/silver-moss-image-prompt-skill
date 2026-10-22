@@ -64,6 +64,7 @@ references/
 examples/
 ├── photo.md                        写实两例
 └── anime.md                        二次元两例
+docs/decisions/                     决策记录（ADR）及索引
 ```
 
 ## 三个设计决定
