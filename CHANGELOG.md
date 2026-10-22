@@ -1,20 +1,34 @@
 # 版本记录
 
-## 未发布
+## v0.3.0 — 2026-10-23
 
 **法律与内容策略**
-- 新增 `DISCLAIMER.md` / `DISCLAIMER_EN.md`：使用者责任、禁止用途、无担保、责任限制、赔偿、与 Apache-2.0 的关系
-- 默认负面基线去掉强制的 `nsfw`（过滤由部署者决定）；SKILL.md 红线加入：不提供涉及未成年人或幼态外观的性内容的写法、不协助以真实人物生成性/诽谤/欺诈内容
-- 不限制人物年龄；`text-in-image.md` 去掉「改印 15 岁」与罩杯描写的对策，儿童题材（如亲子照）无需处理
+- 新增 `DISCLAIMER.md` / `DISCLAIMER_EN.md`：使用者责任、禁止用途、无担保、责任限制、赔偿、与 Apache-2.0 的关系；声明定位为项目立场与风险提示，不是免责保证；中英两版意思一致、有出入请提 issue
+- 默认负面基线不再强制 `nsfw`。`negative.md` §1 与声明写明：它只是软偏置，不是内容过滤器；去掉后对该方向无额外压制，公开、共用或可能触达未成年人的场景应加回，并在部署层做真正的审核
+- SKILL.md 红线新增：不提供涉及未成年人或幼态外观的性内容的写法；不协助以真实人物肖像生成性、诽谤或欺诈内容。人物年龄不再限制，儿童题材（如亲子照）正常处理
+- `text-in-image.md` 删去「改印 15 岁」与罩杯描写的对策
+
+**新增**
+- `examples/layout.md`：Layout 草稿与编译结果示例；SKILL.md 路由表增加 Layout 入口（默认仍只交付 caption）
+- `docs/decisions/`：决策记录与索引，首条 0001 记录内容策略与声明的取舍
+- `hybrid.md` §6：混合通道负面词按四类拆分（通用池 + 各类追加 + 刻意不加）
 
 **修正**
-- `watermark` 与有图内文字的矛盾：有文字时负面去掉 `watermark` 与 `text`（`negative.md`、`troubleshooting.md`、SKILL.md 自检第 9 条、`examples/anime.md`）
-- Layout：补充上游 prompt-enhancer 的编译脚本与 `palette`/`tags` 可选字段（出处为该脚本，USERGUIDE 未记载）；删去「没有脚本只能手算」与「palette 是 HEX 数组」的不实说法；NOTICE 与 `sources.md` 补出处
-- 二次元分段骨架默认改为自然分段，`<|xxx|>` 闭合标签降为可选的社区写法，与 `sources.md` 一致
-- 更正「每条规则都标了 [Q]/[R] 与证据等级」的不实表述（`params.md`、两份 README、`sources.md`）；统一 `[Q,R]` 写法与【社区】括号
-- `negative.md` L1 去掉与 L0 重复的 `worst quality`、`jpeg artifacts`、`bad anatomy`
+- 有图内文字时负面去掉 `watermark` 与 `text`（`negative.md`、`troubleshooting.md`、SKILL.md 说明与自检第 9 条、`examples/anime.md`）
+- 三渲二不再被 `3d render, cgi` 封杀
+- Layout：补充上游 prompt-enhancer 的编译脚本与 `palette`/`tags` 可选字段，出处为该脚本，USERGUIDE 未记载；删去「没有脚本只能手算」与「palette 是 HEX 数组」的不实说法；「跨分辨率易漂移、多框挤占」改标【推断】；删去「当前版本稳定性不足」这一未实测的断言
+- 二次元分段骨架默认改为自然分段，`<|xxx|>` 闭合标签降为需自测的社区写法，与 `sources.md` 一致
+- 更正「每条规则都标了 [Q]/[R] 与证据等级」的不实表述（`params.md`、两份 README、`sources.md`）；`photo`、`anime`、`hybrid` 开头注明效果断言除标注外均为未验证经验；统一 `[Q,R]` 写法与【社区】括号
+- `negative.md` L1 去掉与 L0 重复的词
+- `text-in-image.md` §2 算例改为「需要 5 行，但 100px 只放得下 4 行，根本装不下」
+- `anime.md` §2 浮世绘、水墨重彩补齐「必须同时做的删改」，整列加【推断】注
+- `params.md` §3：1:1 的 0.6M 改为 768×768，2:1 补 1088×544
 - 更正 v0.2.0 记录：「表格零损失」仅指 craft 三文件；`troubleshooting.md` 由表改列表，34 条症状合并为 30 条 bullet，标题保留全部症状，无内容丢失
 
+**已知未验证**
+- `examples/layout.md` 的坐标为手算，未用上游脚本编译；MOSS-Image 实际出图未测试
+- 法律声明未经律师审阅，所列法条未逐条核对原文
+- 规则整体仍无受控对照实验，`sources.md` 的【实测】为空
 
 ## v0.2.0 — 2026-10-21
 

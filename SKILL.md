@@ -10,7 +10,7 @@ description: >-
   Use when the user mentions MOSS-Image / MOSS 出图 / moss-image, or wants image
   prompts written, rewritten or fixed for it.
 license: Apache-2.0
-version: 0.2.0
+version: 0.3.0
 ---
 
 # MOSS-Image 提示词
