@@ -1,6 +1,6 @@
 # Layout JSON（实验性，默认不用）
 
-> **v1 立场**：官方把 Layout 标为**实验性**（Experimental）；本 skill 未做实测。坐标要换算成中心原点，跨分辨率易漂移，多框互相挤占。默认交付 caption；只有文字必须精确落位时才用。
+> **v1 立场**：官方把 Layout 标为**实验性**（Experimental）；本 skill 未做实测。坐标要换算成中心原点；「跨分辨率易漂移、多框互相挤占」是【推断】。默认交付 caption；只有文字必须精确落位时才用。
 
 ## 1. 结构
 
@@ -33,10 +33,10 @@
 
 ## 2. 坐标换算
 
-**优先用上游脚本，不要手算。** 上游仓库自带 `skills/moss-image-prompt-enhancer/scripts/compile_prompt.py`：先写像素草稿（左上角原点、`[x_min,y_min,x_max,y_max]`、`bbox_coord_space:"abs"`、`bbox_format:"xyxy"`，外加顶层 `width`/`height`），脚本转成下面的中心原点 `yxyx` 整数坐标，并拒绝越界或非法框，不会静默裁剪。草稿格式是上游 skill 的内部约定，**不是**模型吃的格式，模型只吃编译后的那一行。
+**优先用上游脚本，不要手算。** 上游仓库自带 `skills/moss-image-prompt-enhancer/scripts/compile_prompt.py`（本仓库不附带；只用标准库，运行前自己读一遍；用法示例见 `examples/layout.md`）：先写像素草稿（左上角原点、`[x_min,y_min,x_max,y_max]`、`bbox_coord_space:"abs"`、`bbox_format:"xyxy"`，外加顶层 `width`/`height`），脚本转成下面的中心原点 `yxyx` 整数坐标，并拒绝越界或非法框，不会静默裁剪。草稿格式是上游 skill 的内部约定，**不是**模型吃的格式，模型只吃编译后的那一行。
 
 ```bash
-python compile_prompt.py draft.json --output prompt.txt
+python <上游仓库>/skills/moss-image-prompt-enhancer/scripts/compile_prompt.py draft.json --output prompt.txt
 ```
 
 宽高必须是 16 的正整数倍；`width`/`height` 不进入编译结果，生成时要在提示词外单独填同样的尺寸。文字框用全局画布坐标，叠在物体上的文字也一样；框只是位置标注，不是要画出来的边框。

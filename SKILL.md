@@ -77,7 +77,7 @@ worst quality, bad anatomy, watermark, jpeg artifact, [L1], [L2 风格封杀], [
 1024×1536 / Steps 50 / CFG 3.0 / Shift 5.0 / Euler / SLG uncond_skip_layers=[22] / Seed 随机
 ```
 
-`nsfw` 不强制：是否过滤由部署者决定，见 `DISCLAIMER.md`。有图内文字时去掉 `watermark`（`negative.md` §2 L0）。二次元可参考 `anime.md` §5 的分段骨架（默认自然分段，闭合标签需自测）；有文字按 `text-in-image.md` 加引号串。
+`nsfw` 不是过滤器，加不加看需求，真正的审核在部署层（`negative.md` §1、`DISCLAIMER.md`）。有图内文字时去掉 `watermark` 和 `text`（`negative.md` §2 L0）。二次元可参考 `anime.md` §5 的分段骨架（默认自然分段，闭合标签需自测）；有文字按 `text-in-image.md` 加引号串。
 
 ## 自检
 
