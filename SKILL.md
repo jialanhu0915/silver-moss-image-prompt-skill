@@ -72,12 +72,12 @@ Shift 5.0、Euler 通用。**规则与档绑定**：标 `[R]` 的条目只在关
 【正面提示词】
 [光线与色温句], [媒介与镜头句]. [主体：年龄骨相 + 发型发质 + 表情 + 服饰]. [动作与接触关系]. [场景与背景]. [材质与收尾].
 【负面提示词】
-nsfw, worst quality, bad anatomy, watermark, jpeg artifact, [L1], [L2 风格封杀], [L3 场景追加]
+worst quality, bad anatomy, watermark, jpeg artifact, [L1], [L2 风格封杀], [L3 场景追加]
 【采样参数】
 1024×1536 / Steps 50 / CFG 3.0 / Shift 5.0 / Euler / SLG uncond_skip_layers=[22] / Seed 随机
 ```
 
-二次元走 `anime.md` 四段式骨架；有文字按 `text-in-image.md` 加引号串。
+`nsfw` 不强制：是否过滤由部署者决定，见 `DISCLAIMER.md`。有图内文字时去掉 `watermark`（`negative.md` §2 L0）。二次元可参考 `anime.md` §5 的分段骨架（默认自然分段，闭合标签需自测）；有文字按 `text-in-image.md` 加引号串。
 
 ## 自检
 
@@ -89,6 +89,7 @@ nsfw, worst quality, bad anatomy, watermark, jpeg artifact, [L1], [L2 风格封�
 6. 所用规则是否属于当前参数档。
 7. 有无 `masterpiece, 8k, ultra detailed` 这类空转词，或把相机型号、渲染引擎当画面效果写。
 8. 混合画面是否只写一套光，并写明谁接受谁的光、边界在哪。
+9. 有图内文字时，负面里是否已去掉 `watermark`、`text`。
 
 这两档是本 skill 的预设组合，官方只给单项推荐值。
 
@@ -101,3 +102,7 @@ nsfw, worst quality, bad anatomy, watermark, jpeg artifact, [L1], [L2 风格封�
 1. 不编造用户没给的事实（人名、品牌、事件、规格），画面内必须出现的文字除外。
 2. 不把不可见信息当画面效果写（型号、引擎、软件名），改写成可见结果。
 3. 不把工具说明写进 caption（`bbox`、`JSON`、坐标、模板说明）。
+4. 不为涉及未成年人或幼态外观的性内容提供写法，无论角色真实、虚构或二次元、无论设定年龄。
+5. 不协助以真实人物肖像生成性内容、诽谤或欺诈内容。
+
+使用者自行承担生成与使用的全部法律风险，见 `DISCLAIMER.md`。

@@ -18,7 +18,7 @@ Her silky ash-grey hair is pulled into slightly loose low twin buns with airy tr
 She wears a plain matte navy wool coat with clean fabric blocks and no gaudy patterns, against a softly out-of-focus snow-covered courtyard at dusk.
 
 【负面提示词】
-nsfw, worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus, lowres, bad hands, extra fingers, fused fingers, deformed hands, distorted face, photorealistic, real human, photograph, camera flash, film grain, microscopic pores, 3d render, cgi, sketch, rough sketch, uncolored patches, thick black outlines, vector art, plastic skin, oversaturated neon colors, gaudy gold embroidery, oversized head, big round babyface, short stubby neck, wide-open staring eyes, flat chest
+worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus, lowres, bad hands, extra fingers, fused fingers, deformed hands, distorted face, photorealistic, real human, photograph, camera flash, film grain, microscopic pores, 3d render, cgi, sketch, rough sketch, uncolored patches, thick black outlines, vector art, plastic skin, oversaturated neon colors, gaudy gold embroidery, oversized head, big round babyface, short stubby neck, wide-open staring eyes, flat chest
 
 【采样参数】
 1248×1248 / Steps 50 / CFG 3.0 / Shift 5.0 / Euler / SLG uncond_skip_layers=[22] / Seed 随机
@@ -55,7 +55,7 @@ Late afternoon sunlight through the corridor windows casting parallel light band
 At the bottom center, crisp yellow Chinese subtitle text with a black outline reading "等等！"
 
 【负面提示词】
-nsfw, worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus, lowres, bad hands, extra fingers, fused fingers, distorted face, photorealistic, real human, photograph, camera flash, film grain, microscopic pores, 3d render, cgi, sketch, rough sketch, uncolored patches, thick black outlines, vector art, plastic skin, oversaturated neon colors, oversized head, big round babyface, wide-open staring eyes
+worst quality, bad anatomy, jpeg artifact, blurry, out of focus, lowres, bad hands, extra fingers, fused fingers, distorted face, photorealistic, real human, photograph, camera flash, film grain, microscopic pores, 3d render, cgi, sketch, rough sketch, uncolored patches, thick black outlines, vector art, plastic skin, oversaturated neon colors, oversized head, big round babyface, wide-open staring eyes
 
 【采样参数】
 1024×1024 / Steps 30 / CFG 3.0 / Shift 5.0 / Euler / SLG 关（档 R） / Seed 随机
@@ -72,9 +72,9 @@ nsfw, worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus
 | 不写「插画感」相关词 | 版式容器与画种词必须同向 |
 | 字幕用引号 + 明确方位 | 图内文字基本写法（`core/text-in-image.md` §1） |
 | 字幕只 3 个字 | 短文案正确率最高 |
-| 负面不加 `text` | 加 `text` 会把字幕一起压掉（`core/negative.md` §2） |
+| 负面去掉 `text` 与 `watermark` | 这两个词会把字幕一起压掉（`core/negative.md` §2） |
 | 档 R 但保留 `five distinct fingers` 类防崩 | 低步数下手最先崩（`styles/anime.md` §9） |
 
-**自检**：画种词与负面互斥 ✓；字幕字高 ≥ 40px ✓；负面未含 `text / speech bubble` ✓；档位与规则档匹配（未堆 Q 档精修词）✓。
+**自检**：画种词与负面互斥 ✓；字幕字高 ≥ 40px ✓；负面未含 `text / watermark / speech bubble` ✓；档位与规则档匹配（未堆 Q 档精修词）✓。
 
 ---

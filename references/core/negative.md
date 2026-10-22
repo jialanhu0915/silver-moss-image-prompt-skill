@@ -8,6 +8,8 @@
 nsfw, worst quality, bad anatomy, watermark, jpeg artifact
 ```
 
+本 skill 的默认基线去掉了 `nsfw`：私人部署的过滤策略由部署者决定，要过滤就自己加回去；公开服务、多人共用或可能触达未成年人的场景应当加。责任划分见 `DISCLAIMER.md`。
+
 - Python API 的负面提示词**默认为空**，负面词得自己填。
 - 训练数据不做质量过滤，**想要什么得在正面写出来**；负面词只能压制方向，不能替代正面描述。
 
@@ -15,14 +17,16 @@ nsfw, worst quality, bad anatomy, watermark, jpeg artifact
 
 拼装顺序 `L0 → L1 → L2 → L3`，从官方基线往外扩，**不要把所有层都塞满**，按场景取用。
 
-### L0 官方基线（默认必带）
+### L0 基线（默认必带）
 
-`nsfw, worst quality, bad anatomy, watermark, jpeg artifact`。画面要出现文字时，把 `watermark`、`text` 这类词处理干净——它们会把正常文字一起压掉，改用 `watermark, signature, ui artifacts` 这类更精确的词。
+`worst quality, bad anatomy, watermark, jpeg artifact`，需要过滤时前面加 `nsfw`。
+
+画面要出现文字时，**去掉 `watermark` 和 `text`**，只留 `worst quality, bad anatomy, jpeg artifact`，必要时加 `signature`。这两个词会把正常文字一起压掉（【推断】，官方未单独测过，出现“字整体消失”时先查这里）。
 
 ### L1 通用解剖与画质
 
 ```text
-blurry, out of focus, lowres, jpeg artifacts, bad anatomy, bad hands, extra limbs, extra arms, extra legs, extra hands, extra fingers, fused fingers, missing fingers, deformed hands, fused bodies, malformed limbs, distorted face, asymmetrical eyes, cross-eyed, worst quality, low quality
+blurry, out of focus, lowres, bad hands, extra limbs, extra arms, extra legs, extra hands, extra fingers, fused fingers, missing fingers, deformed hands, fused bodies, malformed limbs, distorted face, asymmetrical eyes, cross-eyed, low quality
 ```
 
 多人场景追加 `twins, identical faces, same hair color, cloned faces, duplicated heads`。
@@ -48,7 +52,7 @@ blurry, out of focus, lowres, jpeg artifacts, bad anatomy, bad hands, extra limb
 | 遮眼 / 闭眼 / 熟睡 | `visible eyes, open eyes, pupils, looking at viewer, eye contact` |
 | 悬空腿 / 高脚凳 | `feet on floor, standing, touching the ground` |
 | 脚部特写 | `missing toes, fused toes, extra toes` |
-| 图内印字可能导致幼化 | `child, toddler, loli, babyface` |
+| 图内印字可能导致幼化（本意不是幼年角色时） | `child, toddler, loli, babyface` |
 | 图内印字可能导致发胖 | `fat, chubby, plump, thick thighs, wide hips` |
 | 黑白 / 单色画面 | `color, colorful, red, blue, saturated` |
 | 去掉多余人头（分镜 inset） | `multiple heads, extra head` |
@@ -63,7 +67,7 @@ blurry, out of focus, lowres, jpeg artifacts, bad anatomy, bad hands, extra limb
 ## 4. 交付格式
 
 ```text
-nsfw, worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus, lowres, bad hands, extra fingers, fused fingers, deformed hands, distorted face, anime, 2d, illustration, cel shading, 3d render, cgi, doll, plastic skin, cosplay, wig
+worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus, lowres, bad hands, extra fingers, fused fingers, deformed hands, distorted face, anime, 2d, illustration, cel shading, 3d render, cgi, doll, plastic skin, cosplay, wig
 ```
 
 一行写完，逗号分隔，不要换行分块。

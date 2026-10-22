@@ -44,8 +44,8 @@ Clean horizontal Chinese text reading "¥720" printed on the price tag.
 
 | 图内文字 | 副作用 | 对策 |
 | :--- | :--- | :--- |
-| `LOLITA`、`148cm`、`12岁` | 人物被画成幼童 | 改印 `15岁` 之类；正文写清体型；负面加 `child, toddler, loli, babyface` |
-| `AGE : 19`、`BUST 92` | 人物被画胖、画成熟 | 正文写 `very slender, flat stomach, visible collarbone, small A-cup`；负面加 `fat, chubby, curvy, large breasts` |
+| `LOLITA`、`148cm`、`12岁` | 人物外观被带向幼年 | 本意不是幼年角色时：正文写清年龄与体型，负面加 `child, toddler, loli, babyface`；本意就是儿童（如亲子照）则无需处理 |
+| `AGE : 19`、`BUST 92` | 人物被画胖、画成熟 | 正文写清体型，如 `very slender, visible collarbone`；负面加 `fat, chubby, curvy` |
 | `cosplay`、`コスプレ` | 假发感、塑料服装 | 删掉这个词，改写成「天生就长这样」 |
 
 ## 5. 提高正确率的四个手段

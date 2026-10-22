@@ -25,7 +25,7 @@
 - **竖排数字叠成一坨** → 竖排里用了半角阿拉伯数字 → 改汉字数字，`text-in-image.md` §3
 - **姓名里出现一个圆圈 `O`** → 姓名中间有半角空格 → 连写
 - **文字位置乱跑** → 只写了「有标题」 → 补方位与版面关系：`centered across the top third`
-- **文字整体消失** → 负面里的 `text, watermark` 把字压掉了 → 改成 `watermark, signature, ui artifacts`
+- **文字整体消失** → 负面里的 `text, watermark` 把字压掉了 → 两个词都去掉，必要时只留 `signature`（`negative.md` §2 L0）
 - **缺行 / 断行不对** → 没有显式换行 → 用 `\n` 或真实换行
 
 ## 质感与风格

@@ -18,7 +18,7 @@ Behind her the glass door reflects rows of shelves and a green price tag; in the
 Rain droplets caught in the harsh fluorescent light, realistic wet skin highlights, real shadow falloff, zero flat front fill light.
 
 【负面提示词】
-nsfw, worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus, lowres, bad hands, extra fingers, fused fingers, deformed hands, distorted face, anime, 2d, illustration, cel shading, 3d render, cgi, doll, plastic skin, cosplay, wig, flat front lighting, evenly lit skin, overexposed skin, studio fill light
+worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus, lowres, bad hands, extra fingers, fused fingers, deformed hands, distorted face, anime, 2d, illustration, cel shading, 3d render, cgi, doll, plastic skin, cosplay, wig, flat front lighting, evenly lit skin, overexposed skin, studio fill light
 
 【采样参数】
 1024×1536 / Steps 50 / CFG 3.0 / Shift 5.0 / Euler / SLG uncond_skip_layers=[22] / Seed 随机
@@ -53,7 +53,7 @@ The room is dark, lit only by that sign through a beaded curtain; the front of h
 Realistic shadow falloff, zero flat front fill light, organic 35mm analog grain.
 
 【负面提示词】
-nsfw, worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus, lowres, bad hands, extra fingers, fused fingers, deformed hands, distorted face, anime, 2d, illustration, cel shading, 3d render, cgi, doll, plastic skin, cosplay, wig, flat front lighting, evenly lit skin, overexposed skin, pale white skin, studio fill light, whiteout
+worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus, lowres, bad hands, extra fingers, fused fingers, deformed hands, distorted face, anime, 2d, illustration, cel shading, 3d render, cgi, doll, plastic skin, cosplay, wig, flat front lighting, evenly lit skin, overexposed skin, pale white skin, studio fill light, whiteout
 
 【采样参数】
 1456×1456 / Steps 50 / CFG 3.0 / Shift 5.0 / Euler / SLG uncond_skip_layers=[22] / Seed 固定后做变体

@@ -76,7 +76,7 @@ Rain rendered as simple white streaks, puddle reflections flattened into solid l
 ## 6. 混合通道的负面词
 混合时**不能把两套 L2 封杀组都打开**：写实的 `anime, 2d, illustration` 会杀掉你要的 2D 角色，二次元的 `photorealistic, photograph, film grain` 会杀掉你要的实景。只封杀你不想要的**第三态**：
 ```text
-nsfw, worst quality, bad anatomy, watermark, jpeg artifact,
+worst quality, bad anatomy, watermark, jpeg artifact,
 white outline, sticker edge, cut-out edge, pasted-on look,
 style bleeding, gradient between styles, blended styles,
 plastic skin, 3d render, cgi, doll,
