@@ -17,6 +17,10 @@
 
 **本项目不是 OpenMOSS 官方项目，未获其背书或审阅。** 上游若更新参数或 schema，以官方文档为准。
 
+## 免责与使用者责任
+
+使用者责任、禁止用途与责任限制见 [DISCLAIMER.md](DISCLAIMER.md)（[English](DISCLAIMER_EN.md)）。
+
 ## 未使用的材料
 
 本项目未基于任何第三方提示词 skill 改写。分区结构、证据分级体系、档位（Q/R）划分、`craft/` 技法层均为本项目原创设计。

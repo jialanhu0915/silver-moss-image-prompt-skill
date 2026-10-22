@@ -42,6 +42,7 @@ skill 在任务命中时才被加载，所以结构直接决定模型实际读�
 
 ```text
 SKILL.md                            路由、流程、自检
+DISCLAIMER.md / DISCLAIMER_EN.md    法律声明与使用者责任
 references/
 ├── core/
 │   ├── caption.md                  散文交付物：语序、tag 串、长度、语言
@@ -93,6 +94,10 @@ examples/
 - 技法层的中英对照，以及「术语必须降维成可见事实」这一原则，整理自摄影、电影摄影与插画教学的通行内容
 
 变更记录见 [CHANGELOG.md](CHANGELOG.md)。
+
+## 法律声明
+
+本项目不构成法律意见，按现状提供。生成内容及其使用的全部法律风险由使用者自行承担；本项目不强制内容过滤（私人部署自行决定）。涉及未成年人或幼态外观的性内容是绝对红线。使用前请阅读 [DISCLAIMER.md](DISCLAIMER.md)（[English](DISCLAIMER_EN.md)）。
 
 ## 许可证
 

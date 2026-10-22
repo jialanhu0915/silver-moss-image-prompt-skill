@@ -42,6 +42,7 @@ Works with any client implementing the [Agent Skills specification](https://agen
 
 ```text
 SKILL.md                            routing, flow, self-check
+DISCLAIMER.md / DISCLAIMER_EN.md    legal notice and user responsibility
 references/
 ├── core/
 │   ├── caption.md                  prose deliverable: word order, tags, length, language
@@ -93,6 +94,10 @@ examples/
 - The bilingual terminology tables and the principle that a term must be reduced to a visible fact are compiled from general photography, cinematography and illustration teaching.
 
 Release history is in [CHANGELOG.md](CHANGELOG.md).
+
+## Legal notice
+
+This project is not legal advice and is provided as is. The user bears all legal risk for generated content and its use, and the project does not force a content filter (private deployments decide their own). Sexual content involving minors or childlike-looking characters is an absolute red line. Read [DISCLAIMER_EN.md](DISCLAIMER_EN.md) ([中文](DISCLAIMER.md)) before use.
 
 ## License
 
