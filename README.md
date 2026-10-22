@@ -78,7 +78,7 @@ docs/decisions/                     decision records (ADR) and their index
 
 ## Known limits
 
-- **Layout is experimental and off by default.** The upstream repository provides a compiler; this skill includes one example validated through compilation, but actual MOSS-Image output has not been tested. See `core/layout.md` and `examples/layout.md`.
+- **Layout is experimental and off by default.** The upstream repository provides a compiler; this skill includes one example whose coordinate conversion was checked with the compiler before its subtitle box was adjusted; the adjusted box is hand-computed and has not been recompiled, and actual MOSS-Image output has not been tested. See `core/layout.md` and `examples/layout.md`.
 - **Rules are not yet under controlled test.** The technique layer comes from general photography and illustration practice. Claims of the form "this works better on this model" are marked unverified.
 - **Three channels only.** Multi-panel comics, poster layout and game HUD are not written up yet; many core and craft entries carry over, but each lacks its own rules.
 
