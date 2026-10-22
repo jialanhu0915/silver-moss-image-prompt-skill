@@ -2,13 +2,17 @@
 
 ## 1. 官方基线
 
-官方测试给出的有效负面 tag：
+官方测试给出的有效负面 tag（原文，供参考；本 skill 的默认基线见 §2 L0）：
 
 ```text
 nsfw, worst quality, bad anatomy, watermark, jpeg artifact
 ```
 
-本 skill 的默认基线去掉了 `nsfw`：私人部署的过滤策略由部署者决定，要过滤就自己加回去；公开服务、多人共用或可能触达未成年人的场景应当加。责任划分见 `DISCLAIMER.md`。
+**`nsfw` 的位置**：本 skill 的默认基线不带它（决定见 `docs/decisions/0001`）。两点要分清：
+1. 负面词只是把采样推离某个方向，**不是内容过滤器**——既不保证拦住，也替代不了部署层的审核与年龄核验。
+2. 不带它，等于模型对该方向没有额外压制，输出会更放。公开服务、多人共用、可能触达未成年人的场景，把 `nsfw` 加回 L0，**并且**在部署层做真正的审核。
+
+责任划分见 `DISCLAIMER.md`。
 
 - Python API 的负面提示词**默认为空**，负面词得自己填。
 - 训练数据不做质量过滤，**想要什么得在正面写出来**；负面词只能压制方向，不能替代正面描述。
@@ -19,7 +23,7 @@ nsfw, worst quality, bad anatomy, watermark, jpeg artifact
 
 ### L0 基线（默认必带）
 
-`worst quality, bad anatomy, watermark, jpeg artifact`，需要过滤时前面加 `nsfw`。
+`worst quality, bad anatomy, watermark, jpeg artifact`，默认不带 `nsfw`，需要更保守的输出时前面加上（见 §1）。
 
 画面要出现文字时，**去掉 `watermark` 和 `text`**，只留 `worst quality, bad anatomy, jpeg artifact`，必要时加 `signature`。这两个词会把正常文字一起压掉（【推断】，官方未单独测过，出现“字整体消失”时先查这里）。
 

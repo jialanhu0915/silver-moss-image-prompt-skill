@@ -13,8 +13,9 @@
 ## 2. Content filtering: not imposed by default
 
 1. This project does **not require** `nsfw` or similar filter terms in negative prompts. Private, offline, access-controlled deployments have lawful uses, and filtering policy is for the operator to decide.
-2. Consequently, **whether to generate, display or distribute adult or other sensitive content is decided and borne entirely by the user.** For public services, shared environments, or any setting involving minors, the user must add their own content filtering, age verification and moderation.
-3. This project makes no warranty about the legality, appropriateness, truthfulness or safety of generated content, and has **no ability** to review any individual generation.
+2. A negative-prompt `nsfw` tag is only a soft bias on sampling. It is **not a content filter** and is no substitute for moderation or age verification; omitting it means the model has no extra suppression in that direction. Add it back if you want more conservative output, but real filtering must be done at the deployment layer.
+3. Consequently, **whether to generate, display or distribute adult or other sensitive content is decided and borne entirely by the user.** For public services, shared environments, or any setting involving minors, the user must add their own content filtering, age verification and moderation.
+4. This project makes no warranty about the legality, appropriateness, truthfulness or safety of generated content, and has **no ability** to review any individual generation.
 
 ## 3. Prohibited uses (red lines)
 
@@ -28,7 +29,9 @@ The following are not supported, and the user must not use any part of this proj
 | **Infringement** | Infringing copyright, trademark, likeness, reputation, privacy or personal-data rights; using the name of a brand, institution or public figure to publish misleading content |
 | **Deceptive use** | Passing AI-generated content off as real photographs, news, evidence or official documents without disclosure |
 
-These red lines govern **conduct**; they are not an added condition of the license and do not alter the rights granted by Apache-2.0. Anyone who violates them bears all consequences. The maintainers may decline to assist with requests that violate them, and may remove or refuse related contributions.
+These red lines govern **conduct**; they are not an added condition of the license and do not alter the rights granted by Apache-2.0. Anyone who violates them bears all consequences.
+
+Separately, the maintainers' day-to-day discretion over this repository (whether to answer a request, merge or remove a contribution) is repository governance and is unrelated to the rights the license grants.
 
 ## 4. User responsibilities
 
