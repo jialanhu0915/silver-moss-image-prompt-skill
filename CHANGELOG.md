@@ -1,5 +1,20 @@
 # 版本记录
 
+## 未发布
+
+**法律与内容策略**
+- 新增 `DISCLAIMER.md` / `DISCLAIMER_EN.md`：使用者责任、禁止用途、无担保、责任限制、赔偿、与 Apache-2.0 的关系
+- 默认负面基线去掉强制的 `nsfw`（过滤由部署者决定）；SKILL.md 红线加入：不提供涉及未成年人或幼态外观的性内容的写法、不协助以真实人物生成性/诽谤/欺诈内容
+- 不限制人物年龄；`text-in-image.md` 去掉「改印 15 岁」与罩杯描写的对策，儿童题材（如亲子照）无需处理
+
+**修正**
+- `watermark` 与有图内文字的矛盾：有文字时负面去掉 `watermark` 与 `text`（`negative.md`、`troubleshooting.md`、SKILL.md 自检第 9 条、`examples/anime.md`）
+- 二次元分段骨架默认改为自然分段，`<|xxx|>` 闭合标签降为可选的社区写法，与 `sources.md` 一致
+- 更正「每条规则都标了 [Q]/[R] 与证据等级」的不实表述（`params.md`、两份 README、`sources.md`）；统一 `[Q,R]` 写法与【社区】括号
+- `negative.md` L1 去掉与 L0 重复的 `worst quality`、`jpeg artifacts`、`bad anatomy`
+- 更正 v0.2.0 记录：「表格零损失」仅指 craft 三文件；`troubleshooting.md` 由表改列表，34 条症状合并为 30 条 bullet，标题保留全部症状，无内容丢失
+
+
 ## v0.2.0 — 2026-10-21
 
 全仓按「只留能用的话」重写，结构与文件职责不变。
