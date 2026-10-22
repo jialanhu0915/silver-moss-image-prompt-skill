@@ -2,7 +2,7 @@
 
 [简体中文](DISCLAIMER.md) · **English**　　Last updated: 2026-10-22　　Applies to: v0.2.x onward
 
-> **By using this project you confirm that you have read and agree to this notice.** This project is not responsible for any image produced from its prompts, nor for how you use such images. All legal risk is borne by the user. If you do not agree, do not use it. If the English and Chinese versions differ, the Chinese version ([DISCLAIMER.md](DISCLAIMER.md)) prevails.
+> **By using this project you confirm that you have read and agree to this notice.** This project is not responsible for any image produced from its prompts, nor for how you use such images. All legal risk is borne by the user. If you do not agree, do not use it. The English and Chinese versions are intended to say the same thing; if you find a discrepancy, please open an issue in the repository.
 
 ## 1. What this is and is not
 
