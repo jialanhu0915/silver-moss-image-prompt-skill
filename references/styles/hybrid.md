@@ -1,5 +1,7 @@
 # 通道 C：混合风格
 
+> 本文件里关于「模型会怎样」的效果断言，除已标注者外，均为未经对照实验的工作经验（证据分级见 `diagnostics/sources.md`）。
+
 混合不是「写实和二次元各写一半」，那样只会得到两套光照打架的中间态；融合手段没写，模型就自己选最省事的那种：剪贴画白边、正中一条分镜线，或整图退化成厚涂。必须先回答三个问题：
 1. **谁是主体**——决定语言主干用哪种描述习惯、负面词封杀哪一边。
 2. **靠什么融合**——光影合成、描边统一、调色统一、介质叠加、还是硬分屏线。
@@ -74,15 +76,20 @@ Rain rendered as simple white streaks, puddle reflections flattened into solid l
 - 主体跨线时明确哪一半用哪种处理：`her face crosses the line, the left half of her face drawn in ink screentone, the right half in oil color`；负面必须封渗透：`style bleeding, gradient between styles, blended styles, half-colored`；**不要**在跨次元合成里用这套分块——那会切出分镜线（见 §2）。
 
 ## 6. 混合通道的负面词
-混合时**不能把两套 L2 封杀组都打开**：写实的 `anime, 2d, illustration` 会杀掉你要的 2D 角色，二次元的 `photorealistic, photograph, film grain` 会杀掉你要的实景。只封杀你不想要的**第三态**：
+**四类混合不共用一个池。** 通用池只放各类都不要的东西；再按类型追加。尤其不能把两套 L2 封杀组都打开（写实的 `anime, 2d, illustration` 会杀掉 2D 角色，二次元的 `photorealistic, photograph` 会杀掉实景），也不能把 `3d render, cgi` 套给三渲二——它需要 3D 结构。
+
+通用（四类都带）：
 ```text
-worst quality, bad anatomy, watermark, jpeg artifact,
-white outline, sticker edge, cut-out edge, pasted-on look,
-style bleeding, gradient between styles, blended styles,
-plastic skin, 3d render, cgi, doll,
-blurry, out of focus, lowres, bad hands, extra fingers, fused fingers
+worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus, lowres, bad hands, extra fingers, fused fingers, style bleeding
 ```
-三渲二额外封：`photorealistic skin, subsurface scattering, glossy plastic, toy figure`；同图双画风额外封：`half-colored, smeared transition, airbrushed blend`。
+有图内文字时去掉 `watermark`（`core/negative.md` §2 L0）。
+
+| 类型 | 追加 | 刻意不加 |
+| :--- | :--- | :--- |
+| 跨次元合成 | `white outline, sticker edge, cut-out edge, pasted-on look, plastic skin, doll, 3d render, cgi` | `anime, 2d`、`photorealistic` |
+| 三渲二 | `photorealistic skin, subsurface scattering, glossy plastic, toy figure` | `3d render, cgi`、`anime, 2d` |
+| 媒介叠合 | `sticker edge, pasted-on look, flat digital overlay`【推断】 | `illustration, painting`（叠加层本来就是手绘） |
+| 同图双画风 | `gradient between styles, blended styles, half-colored, smeared transition, airbrushed blend` | 任一边的画种词 |
 
 ## 7. 混合通道的自检
 1. 三问都答了吗——谁主体、靠什么融合、边界在哪？是否只写了一套光？两套方向不同的主光会互相抵消。

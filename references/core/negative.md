@@ -45,9 +45,7 @@ blurry, out of focus, lowres, bad hands, extra limbs, extra arms, extra legs, ex
 
 ### 混合通道（`styles/hybrid.md`）
 
-写实组里的 `anime, 2d, illustration` 会杀掉你要的 2D 角色，二次元组里的 `photorealistic, photograph` 会杀掉你要的实景。混合画面**不能把两套 L2 都打开**，只封杀你不想要的第三态：`white outline, sticker edge, cut-out edge, pasted-on look, style bleeding, gradient between styles, blended styles, plastic skin, toy figure`
-
-三渲二额外封 `photorealistic skin, subsurface scattering, glossy plastic`；同图双画风额外封 `half-colored, smeared transition`。
+写实组里的 `anime, 2d, illustration` 会杀掉你要的 2D 角色，二次元组里的 `photorealistic, photograph` 会杀掉你要的实景。混合画面**不能把两套 L2 都打开**，只封杀你不想要的第三态：`style bleeding` 等通用词；四类混合各自的追加词与「刻意不加」见 `styles/hybrid.md` §6——例如三渲二不能带 `3d render, cgi`。
 
 ### L3 场景追加
 
