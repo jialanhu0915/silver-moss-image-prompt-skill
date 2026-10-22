@@ -95,7 +95,7 @@ worst quality, bad anatomy, watermark, jpeg artifact, [L1], [L2 风格封杀], [
 
 ## Layout
 
-官方标为 Experimental：坐标要手算中心原点，跨分辨率易漂移，多框互相挤占。**默认只交付 caption。**只有文字必须精确落位（海报、封面、表格）才用，见 `core/layout.md`。
+官方标为 Experimental：坐标要换算成中心原点（上游有编译脚本），跨分辨率易漂移，多框互相挤占。**默认只交付 caption。**只有文字必须精确落位（海报、封面、表格）才用，见 `core/layout.md`。
 
 ## 红线
 

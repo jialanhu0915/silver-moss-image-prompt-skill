@@ -76,7 +76,7 @@ examples/
 
 ## Known limits
 
-- **Layout is off by default.** The official docs mark it experimental; coordinates must be computed by hand and drift across resolutions. `core/layout.md` is a fallback path.
+- **Layout is off by default.** The official docs mark it experimental; coordinates need converting to a centred origin (upstream ships a compile script) and drift across resolutions. `core/layout.md` is a fallback path.
 - **Rules are not yet under controlled test.** The technique layer comes from general photography and illustration practice. Claims of the form "this works better on this model" are marked unverified.
 - **Three channels only.** Multi-panel comics, poster layout and game HUD are not written up yet; many core and craft entries carry over, but each lacks its own rules.
 

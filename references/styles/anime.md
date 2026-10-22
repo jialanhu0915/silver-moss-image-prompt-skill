@@ -33,7 +33,7 @@
 | 集换式卡牌 | `SSR anime trading card, ornate golden holographic frame border, dazzling illustration` | `a top title bar reading "苍之骑士", five gold stars at the top right, a bottom stat box reading "ATK 2500 / DEF 2100"` |
 
 ## 4. 通道三：配色
-- 官方支持 `items[].palette` / `summary.palette` 的 HEX 数组，但这属于 Layout 通道，当前版本不稳定（见 `core/layout.md`）。
+- Layout 的 `summary.palette` / `items[].palette` 是字符串数组，见上游 prompt-enhancer 的编译脚本；`USERGUIDE` 未记载，是否接受 HEX、效果如何均【未验证】。Layout 本身不稳定（见 `core/layout.md`）。
 - **降级做法**：用自然语言写色盘，比给 HEX 更稳——3~4 个色名 + 明度饱和度形容词（`muted, low-saturation, dusty, deep`），**删掉正文里与之冲突的具体颜色词**，收尾留一句 `dominated strictly by this palette`：
 ```text
 Muted, sophisticated low-saturation palette of dusty blue, warm cream and desaturated terracotta.

@@ -9,6 +9,7 @@
 
 **修正**
 - `watermark` 与有图内文字的矛盾：有文字时负面去掉 `watermark` 与 `text`（`negative.md`、`troubleshooting.md`、SKILL.md 自检第 9 条、`examples/anime.md`）
+- Layout：补充上游 prompt-enhancer 的编译脚本与 `palette`/`tags` 可选字段（出处为该脚本，USERGUIDE 未记载）；删去「没有脚本只能手算」与「palette 是 HEX 数组」的不实说法；NOTICE 与 `sources.md` 补出处
 - 二次元分段骨架默认改为自然分段，`<|xxx|>` 闭合标签降为可选的社区写法，与 `sources.md` 一致
 - 更正「每条规则都标了 [Q]/[R] 与证据等级」的不实表述（`params.md`、两份 README、`sources.md`）；统一 `[Q,R]` 写法与【社区】括号
 - `negative.md` L1 去掉与 L0 重复的 `worst quality`、`jpeg artifacts`、`bad anatomy`

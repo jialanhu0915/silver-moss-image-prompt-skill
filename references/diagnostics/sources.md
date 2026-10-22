@@ -28,6 +28,7 @@
 | Tag 顺序：`Quality -> Score -> Meta -> Year -> Character -> Series -> Artist -> General`（示例含 `@foo bar`） | 同上 |
 | 文字排版：模型会自动换行但未必符合预期，需要精确控制时写 `\n` 或真实换行 | 同上 |
 | Layout JSON 标为实验性；`bbox_coord_space: "abs_centralized"`（中心原点）、`bbox_format: "yxyx"`、字段 `summary.caption/meta/canvas` 与 `items[].label/caption/text/bbox`；`label` 三值 `object/character/text`；`canvas` 三值 `single/multi_panel/collage`；左上原点坐标分别减 `W/2`、`H/2` 转换 | `USERGUIDE_ZH.md` §Layout Prompt、`README_ZH.md` §Layout 布局生成 |
+| Layout 可选字段 `summary.palette`、`items[].tags`、`items[].palette`（字符串数组）；像素草稿（`abs` + `xyxy`）经脚本编译为 `abs_centralized` + `yxyx`，左上取 floor、右下取 ceil，越界直接报错 | `skills/moss-image-prompt-enhancer/`（`SKILL.md`、`references/layout.md`、`scripts/compile_prompt.py`），非 `USERGUIDE` |
 | 采用绝对像素坐标的理由：`更适合不同分辨率和长宽比下的布局控制` | 同上 |
 | 自然语言与结构化输入可混用 | 同上 |
 | 训练 caption 规范：`Describe the composition, key subjects, actions, setting, colors, lighting, and artistic style in detail.` / `Include only information visible in the image.` / 逐字保留可见文字、不做翻译改写 / Watermark 用 0–1000 归一化坐标 | `USERGUIDE_ZH.md` §图片标注 §Caption Prompt |

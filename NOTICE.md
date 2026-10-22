@@ -14,6 +14,7 @@
 | Layout JSON schema、`abs_centralized` / `yxyx` 定义与坐标换算规则 | `USERGUIDE.md` / `USERGUIDE_ZH.md` §Layout Prompts |
 | 训练 caption 规范（`Include only information visible in the image` 等） | `USERGUIDE.md` / `USERGUIDE_ZH.md` §Image Annotation |
 | 模型架构、Base 与 SFT 差异、Python API 参数名 | `README.md` / `README_ZH.md` |
+| Layout 可选字段（`palette`、`tags`）、像素草稿到中心坐标的编译规则 | `skills/moss-image-prompt-enhancer/`（`SKILL.md`、`references/layout.md`、`scripts/compile_prompt.py`） |
 
 **本项目不是 OpenMOSS 官方项目，未获其背书或审阅。** 上游若更新参数或 schema，以官方文档为准。
 
@@ -23,4 +24,4 @@
 
 ## 未使用的材料
 
-本项目未基于任何第三方提示词 skill 改写。分区结构、证据分级体系、档位（Q/R）划分、`craft/` 技法层均为本项目原创设计。
+本项目未基于任何第三方提示词 skill 改写，也未复制上游 prompt-enhancer 的文本或脚本，只引用其中的字段与坐标规则作为事实，并指向原脚本。分区结构、证据分级体系、档位（Q/R）划分、`craft/` 技法层均为本项目原创设计。
