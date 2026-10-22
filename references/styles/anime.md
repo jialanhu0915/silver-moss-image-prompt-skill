@@ -40,15 +40,15 @@ Muted, sophisticated low-saturation palette of dusty blue, warm cream and desatu
 ```
 
 ## 5. 完成度：主次分级
-二次元最容易出两种废图：**半成品草稿**（笔触松到脸上）和**塑料页游立绘**（全图过度锐化）。把「精修」和「松弛」分配到不同部位，四段骨架可直接抄、替换方括号：
+二次元最容易出两种废图：**半成品草稿**（笔触松到脸上）和**塑料页游立绘**（全图过度锐化）。把「精修」和「松弛」分配到不同部位，四段骨架可直接抄、替换方括号，**默认用自然换行分段**：
 ```text
-<|artist|>[画师触发词，无则整行删除]<|/artist|>
-<|style_and_aesthetic|>High-taste 2D digital painting with selective focus: finely rendered luminous facial features and delicate hair strands, contrasted against expressive breathable painterly gouache brushwork on the clothing and a softly blurred background. Muted low-saturation palette of [2~3 色名]. Zero rough sketch lines.<|/style_and_aesthetic|>
-<|teenage_girl_aura|>[景别] of a slender [年龄] girl with balanced facial proportions, a softly tapered chin and a slender neck. [头颈微动态], she gazes with [眼神]. Soft blush on the nose tip and cheeks, glossy pale lips.<|/teenage_girl_aura|>
-<|hair_and_pose|>Her silky [发色] hair styled into [发型，加 slightly loose / airy translucent wisps], [手部与道具的简洁动作].<|/hair_and_pose|>
-<|outfit_and_background|>She wears [服装，加 clean matte fabric blocks, without gaudy patterns], set against a softly out-of-focus [背景].<|/outfit_and_background|>
+[画师触发词，无则整行删除]
+High-taste 2D digital painting with selective focus: finely rendered luminous facial features and delicate hair strands, contrasted against expressive breathable painterly gouache brushwork on the clothing and a softly blurred background. Muted low-saturation palette of [2~3 色名]. Zero rough sketch lines.
+[景别] of a slender [年龄] girl with balanced facial proportions, a softly tapered chin and a slender neck. [头颈微动态], she gazes with [眼神]. Soft blush on the nose tip and cheeks, glossy pale lips.
+Her silky [发色] hair styled into [发型，加 slightly loose / airy translucent wisps], [手部与道具的简洁动作].
+She wears [服装，加 clean matte fabric blocks, without gaudy patterns], set against a softly out-of-focus [背景].
 ```
-`<|xxx|>` 闭合标签是**社区写法**，不在官方文档里；用之前自己 A/B 一次，判据：同一 seed 下脸是否更稳、特征是否串味。
+可选：给每段套 `<|style_and_aesthetic|>…<|/style_and_aesthetic|>` 这类闭合标签（段名自拟）。这是**社区写法**，不在官方文档里；用之前自己 A/B 一次，判据：同一 seed 下脸是否更稳、特征是否串味。
 
 四段骨架的三条规则：
 1. **不要往衣服上加复杂花纹**：`golden floral embroidery` 会分走注意力，写 `without gaudy embroidery, plain matte borders`，大色块更干净。

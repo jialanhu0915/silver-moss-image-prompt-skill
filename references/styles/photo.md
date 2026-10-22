@@ -32,7 +32,7 @@
 | 12 | 青橙宽银幕 | `cinematic anamorphic widescreen movie still, teal-and-orange grading, deep teal shadows and warm amber skin, oval vertical bokeh orbs, horizontal blue flare streak` | 椭圆焦外光斑、水平拉丝 |
 
 ## 4. 暗部与逆光（最容易翻车的地方）
-只写「夜晚」「暗室」不够：肖像训练图以正面平光为主，模型会自行给正面补光；`[R,Q]` 顺光主导的画面不需要这套。
+只写「夜晚」「暗室」不够：肖像训练图以正面平光为主，模型会自行给正面补光；`[Q,R]` 顺光主导的画面不需要这套。
 1. **正面提示词删掉**：`fair skin, porcelain skin, bright, glowing, luminous skin, daylight`。
 2. **正文直接写暗部位置**：`the front of her face, chest and stomach are sunk in deep shadow, only a thin rim light traces the edge of her silhouette`。
 3. **结尾锁一句**：`realistic shadow falloff, zero flat front fill light`。
@@ -59,7 +59,7 @@ a slender 15-to-16-year-old girl with true adolescent proportions — neither a 
 遮眼、闭眼、熟睡时**删掉所有眼神动词**（`looking, gazing, staring, wide-eyed`），改写 `eyes completely closed, unaware of the camera`，负面加 `visible eyes, open eyes, looking at viewer`。
 
 ## 6. 动作写成静态结果
-`[R,Q]` 涉及衣物、道具、肢体的动作，写成「已经处于什么状态」（进行时动词会多画一只手）：
+`[Q,R]` 涉及衣物、道具、肢体的动作，写成「已经处于什么状态」（进行时动词会多画一只手）：
 
 | 别写 | 改成 |
 | :--- | :--- |
@@ -69,7 +69,7 @@ a slender 15-to-16-year-old girl with true adolescent proportions — neither a 
 
 ## 7. 多人同框
 - 按位置分块写，不按部位分块；每个人写全自己的发色、肤色、是否戴眼镜、有无雀斑。
-- 第二人起句首切断继承：`In sharp contrast, the woman on the right wears NO glasses and has spotless skin with zero freckles`；群像开头可写计量句：`Featuring exactly 4 distinct people, each appearing once, arranged asymmetrically rather than in a grid.`（官方公开示例，增益未独立对照，`[社区]`）；负面加 `twins, identical faces, same hair color, cloned faces`；两人身体重叠时不要用纯侧机位（`from side`），改斜侧 3/4 角。
+- 第二人起句首切断继承：`In sharp contrast, the woman on the right wears NO glasses and has spotless skin with zero freckles`；群像开头可写计量句：`Featuring exactly 4 distinct people, each appearing once, arranged asymmetrically rather than in a grid.`（官方公开示例，增益未独立对照，【社区】）；负面加 `twins, identical faces, same hair color, cloned faces`；两人身体重叠时不要用纯侧机位（`from side`），改斜侧 3/4 角。
 
 ## 8. 剧照感：让它不像证件照
 真实电影截图很少是单人孤立居中。五件事任选三件：
@@ -82,7 +82,7 @@ a slender 15-to-16-year-old girl with true adolescent proportions — neither a 
 ## 9. 这条通道的专有坑
 - **正文里残留二次元词会把整图拉回 2D**：`anime, cel shading, waifu, 2.5D` 一个都不能留；**黑背景 + 白皙皮肤**是最容易过曝的组合，必须按 §4 写暗部。
 - **不要指望写出写实 3A 游戏角色**：`Unreal Engine 5`、`CGI character`、`3D render` 会退化成塑料人偶或厚涂；要写实游戏角色，用真拍写法（胶片、直闪、毛孔），不要提引擎。
-- **档 R**：手、眼、文字、图案最先崩，`[R]` 标记的防崩词（`five distinct natural fingers clearly visible`、`crisp symmetrical eyes`）不能省；**`[Q]`**：开着 SLG 时不要继续堆防崩词，会把边缘压得过硬。
+- **档 R**：手、眼、文字、图案最先崩，防崩词（`five distinct natural fingers clearly visible`、`crisp symmetrical eyes`）不能省；**`[Q]`**：开着 SLG 时不要继续堆防崩词，会把边缘压得过硬。
 
 ## 10. 母版
 ### 母版 A：胶片直闪（默认主力，档 R 或 Q）

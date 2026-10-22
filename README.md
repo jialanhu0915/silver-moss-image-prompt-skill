@@ -68,11 +68,11 @@ examples/
 
 ## Three design decisions
 
-**Rules are bound to sampling presets.** The official guide states that turning SLG off makes output look very realistic but may collapse detail. The skill splits accordingly: **Q** (SLG on, 50 steps, ≥1M px, for delivery) and **R** (SLG off, few steps, 0.6M px, for fast iteration). Rules carry `[Q]` / `[R]` tags, because anti-collapse phrasing overshoots at Q and is mandatory at R.
+**Rules are bound to sampling presets.** The official guide states that turning SLG off makes output look very realistic but may collapse detail. The skill splits accordingly: **Q** (SLG on, 50 steps, ≥1M px, for delivery) and **R** (SLG off, few steps, 0.6M px, for fast iteration). Preset-dependent rules carry `[Q]` / `[R]` tags (untagged ones hold at both), because anti-collapse phrasing overshoots at Q and is mandatory at R.
 
 **Only visible information.** The official captioning spec asks for composition, subjects, actions, setting, colours, lighting and artistic style, and for visible information only. Camera bodies, render engines, software names and artist IDs therefore do little on their own — write the visible result instead. The rule runs through every file.
 
-**Evidence levels, stated up front.** Every rule is tagged official, inferred, community, measured or unverified. Most entries are official or inferred; anything that would need a controlled experiment to confirm is marked unverified rather than presented as fact. `sources.md` also lists the widely repeated claims this skill deliberately does not adopt.
+**Evidence levels, stated up front.** Evidence is graded official, inferred, community, measured or unverified (`sources.md`). Tagged entries are mostly official or inferred; an untagged assertion is the author's unverified working practice, and anything that would need a controlled experiment is marked unverified rather than presented as fact. `sources.md` also lists the widely repeated claims this skill deliberately does not adopt.
 
 ## Known limits
 
