@@ -63,7 +63,8 @@ references/
     └── sources.md                  citations, evidence levels, rejected folklore
 examples/
 ├── photo.md                        two photoreal walkthroughs
-└── anime.md                        two anime walkthroughs
+├── anime.md                        two anime walkthroughs
+└── layout.md                       experimental JSON layout: source draft and compiled prompt
 docs/decisions/                     decision records (ADR) and their index
 ```
 
@@ -77,7 +78,7 @@ docs/decisions/                     decision records (ADR) and their index
 
 ## Known limits
 
-- **Layout is off by default.** The official docs mark it experimental; coordinates need converting to a centred origin (upstream ships a compile script) and drift across resolutions. `core/layout.md` is a fallback path.
+- **Layout is experimental and off by default.** The upstream repository provides a compiler; this skill includes one example validated through compilation, but actual MOSS-Image output has not been tested. See `core/layout.md` and `examples/layout.md`.
 - **Rules are not yet under controlled test.** The technique layer comes from general photography and illustration practice. Claims of the form "this works better on this model" are marked unverified.
 - **Three channels only.** Multi-panel comics, poster layout and game HUD are not written up yet; many core and craft entries carry over, but each lacks its own rules.
 

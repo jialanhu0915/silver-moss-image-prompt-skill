@@ -63,7 +63,8 @@ references/
     └── sources.md                  出处、证据等级、明确不采用的社区说法
 examples/
 ├── photo.md                        写实两例
-└── anime.md                        二次元两例
+├── anime.md                        二次元两例
+└── layout.md                       实验性 JSON Layout：草稿与编译结果
 docs/decisions/                     决策记录（ADR）及索引
 ```
 
@@ -77,7 +78,7 @@ docs/decisions/                     决策记录（ADR）及索引
 
 ## 已知边界
 
-- **Layout 默认关闭。** 官方标为实验性，坐标要换算成中心原点（上游有编译脚本）、跨分辨率易漂移；`core/layout.md` 只作备用路径。
+- **Layout 实验性且默认关闭。** 上游提供编译脚本；本 skill 增加了一个通过编译校验的示例，但尚未测试 MOSS-Image 实际出图。见 `core/layout.md` 与 `examples/layout.md`。
 - **规则尚未做受控测试。** 技法层来自摄影与插画的通行知识；「在本模型上更有效」这类断言均标为未验证。
 - **只写了三条通道。** 多分镜漫画、海报排版、游戏 HUD 尚未成篇；core 与 craft 的条目大多可以复用，但各自缺专项规则。
 

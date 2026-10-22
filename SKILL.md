@@ -45,6 +45,7 @@ Qwen3.5-9B 编码器 → 42 层单流 DiT → FLUX.2 VAE。吃长而具体的散
 | 出图有毛病 | `diagnostics/troubleshooting.md` |
 | 规则出处 | `diagnostics/sources.md` |
 | 完整范例 | `examples/photo.md`、`examples/anime.md` |
+| 用户明确要求 Layout / 精确控位 | `core/layout.md`、`examples/layout.md`（实验性） |
 
 `core/caption.md` 与 `core/negative.md` 是全局契约，首次使用时过一遍。
 
@@ -95,7 +96,7 @@ worst quality, bad anatomy, watermark, jpeg artifact, [L1], [L2 风格封杀], [
 
 ## Layout
 
-官方标为 Experimental：坐标要换算成中心原点（上游有编译脚本），跨分辨率易漂移，多框互相挤占。**默认只交付 caption。**只有文字必须精确落位（海报、封面、表格）才用，见 `core/layout.md`。
+官方标为 Experimental。本 skill 提供上游编译器的使用说明与一个 JSON 示例，但**尚未验证 MOSS-Image 实际出图质量**。**默认只交付 caption。**用户明确要求 Layout，或文字 / 元素必须精确落位时，读 `core/layout.md`；示例见 `examples/layout.md`。
 
 ## 红线
 
