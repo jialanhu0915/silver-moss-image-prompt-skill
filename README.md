@@ -30,6 +30,31 @@ A typical request loads `SKILL.md`, one contract file and one style file, and op
 
 Maintenance rule: the reference tables are append-only. Entries may be added or corrected, never removed or merged; only the prose around them gets trimmed.
 
+## What the same-seed tests show
+
+Three same-seed pairs at 1360×752, Steps 25, CFG 3.0, Euler + simple, SLG off; only the caption changed, plus the prompt-rewriter switch on the first pair. **Single seed, single community weight — directional evidence, not statistics.** Captions, negatives and caveats: [`examples/ab-test.md`](examples/ab-test.md).
+
+**Photoreal, light before subject.** Rewriter off: the skill caption lands the green canopy light, its reflection on wet asphalt, the blue-black street and the warm shelf interior; the thin baseline stays flat, warm and rainless.
+
+| baseline | skill caption |
+| :---: | :---: |
+| ![baseline](imgs/a_base_off.png) | ![skill](imgs/a_skill_off.png) |
+
+**Concept plus direction.** The baseline turns the library into a gothic manor: moon centred, no human, no scale. The skill caption keeps the window mullions cutting the moon, cold moonlight, one amber desk lamp and a receding row of green-shaded lamps.
+
+| baseline | skill caption |
+| :---: | :---: |
+| ![baseline](imgs/b_base_up.png) | ![skill](imgs/b_skill_up.png) |
+
+**Direction layer, two decisions.** Absolute phrasing ("sinking into brown shadow", blurred railing) buried the subject; naming a readability floor, a foreground share and a main light brought the newspaper, the lidded cup, the red tail light and the railing strip into the frame.
+
+| baseline | skill caption |
+| :---: | :---: |
+| ![baseline](imgs/c_base_off.png) | ![skill](imgs/c_skill_off.png) |
+
+The pairs show that specific, ordered captions are executed. They do not show that the result looks better: the baseline images are competent, and the skill versions are better specified rather than more attractive.
+
+
 ## Install
 
 Drop the directory into an Agent Skills path. The directory name must match `name` in the frontmatter:
@@ -75,8 +100,10 @@ examples/
 ├── photo.md                        two photoreal walkthroughs
 ├── anime.md                        two anime walkthroughs
 ├── creative.md                     four concept walkthroughs, incl. poster before/after
+├── ab-test.md                      same-seed A/B: captions, parameters, observations
 └── layout.md                       experimental JSON layout: source draft and compiled prompt
 docs/decisions/                     decision records (ADR) and their index
+imgs/                               same-seed output pairs referenced by the README
 ```
 
 ## Three design decisions
@@ -90,16 +117,17 @@ docs/decisions/                     decision records (ADR) and their index
 ## Known limits
 
 - **Layout is experimental and off by default.** The bundled compiler validates draft fields and coordinate conversion, not semantic placement or generated image quality. The example compiles with it; actual MOSS-Image output has not been tested. See `core/layout.md` and `examples/layout.md`.
-- **Rules are not yet under controlled test.** The technique layer comes from general photography and illustration practice. Claims of the form "this works better on this model" are marked unverified.
+- **Rules are only partly tested.** One same-seed round exists (`examples/ab-test.md`, `sources.md` §五), with a single seed and one community weight; everything else in the technique layer still comes from general photography and illustration practice, and claims of the form "this works better on this model" stay marked unverified.
 - **The creative layer is taste, not measurement.** Concept modes, mechanism list and elimination checks are the author's judgement and marked unverified; they describe how to design a picture, not what the model will render. None of the four walkthroughs in `examples/creative.md` has confirmed output.
 - **The direction layer borrows from film and design practice.** Framing, camera and colour advice is general craft, not measured behaviour of this model; the decision cap (2–5 items) is a guard against prompt bloat, not a validated threshold.
 - **Three channels only.** Multi-panel comics and game HUD are not written up yet. Posters now have `direction/poster.md` for hierarchy, safe title zone, reading path and type-image relation, but complex infographics, multi-column collateral and exact text placement still lack dedicated procedures and testing; many core and craft entries carry over, yet each lacks its own rules.
 
 ## Roadmap
 
-- [ ] Same-seed A/B for every unverified claim (template in `sources.md`)
+- [ ] Same-seed A/B for the remaining unverified claims (template in `sources.md`; first round in [`examples/ab-test.md`](examples/ab-test.md))
 - [ ] Four-scenario creative A/B, upsampler off: library (boost), cosmic poster (spectacle), castle bridge (faithful), tea poster (flat print); 2–3 seeds each, blind-rated for first-glance impact, concept distinctiveness, compositional clarity and brief fit
-- [ ] Direction-layer A/B: same concept, baseline vs one or two added decisions only (camera, then light), so the gain can be attributed
+- [x] Direction-layer A/B: baseline vs one or two added decisions only — one pair done at one seed, see `examples/ab-test.md` §C
+- [ ] Repeat the A/B at 2–3 more seeds and at preset Q before treating any result as general
 - [ ] Multi-panel comic channel (blocked on Layout stability)
 - [ ] Extend poster work: complex infographics, multi-column collateral, exact text placement (basics live in `direction/poster.md`)
 - [ ] Game screenshot / HUD channel

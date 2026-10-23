@@ -39,6 +39,7 @@
 2. **正文直接写暗部位置**：`the front of her face, chest and stomach are sunk in deep shadow, only a thin rim light traces the edge of her silhouette`。
 3. **结尾锁一句**：`realistic shadow falloff, zero flat front fill light`。
 4. **负面追加**：`flat front lighting, evenly lit skin, overexposed skin, pale white skin, studio fill light, whiteout`。
+5. **留可读下限**：暗部写得太绝对会连主体一起埋掉——只写 `the rest of the room sinking into brown shadow` 时，人脸和手里的报纸会同时黑掉。请同时写主角仍有多少光与什么可辨：`cold daylight stays the main light on him ... a newspaper open at chest height and lit well enough to read the column edges`。前景遮挡同理，不写占比时会吃掉四分之一画幅：`a narrow blurred strip of wooden railing that occupies only the bottom sixth of the frame`。【实测】单 seed，见 `diagnostics/sources.md` §五。
 
 ## 5. 主体：年龄、骨相、身材
 ### 5.1 双向排除

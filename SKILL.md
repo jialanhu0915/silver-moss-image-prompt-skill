@@ -51,7 +51,7 @@ Qwen3.5-9B 编码器 → 42 层单流 DiT → FLUX.2 VAE。吃长而具体的散
 | 视觉润色、语序、长度、语言、tag 串 | `core/caption.md` |
 | 出图有毛病 | `diagnostics/troubleshooting.md` |
 | 规则出处 | `diagnostics/sources.md` |
-| 完整范例 | `examples/photo.md`、`examples/anime.md`、`examples/creative.md` |
+| 完整范例 | `examples/photo.md`、`examples/anime.md`、`examples/creative.md`、`examples/ab-test.md` |
 | 用户明确要求 Layout / 精确控位 | `core/layout.md`、`examples/layout.md`（实验性） |
 
 `core/caption.md` 与 `core/negative.md` 是全局契约，首次使用时过一遍。
