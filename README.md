@@ -18,13 +18,14 @@ Skills are loaded when a task matches, so the structure decides what the model a
 
 | Layer | Directory | Contents | Loaded |
 | :--- | :--- | :--- | :--- |
-| Routing | `SKILL.md` | decision table, five-step flow, self-check, hard rules | every time |
+| Routing | `SKILL.md` | decision table, flow, self-check, hard rules | every time |
 | Contract | `references/core/` | caption writing, sampling, negatives, in-image text, Layout | first run, then as needed |
+| Creative | `references/creative/` | mode choice, concept mechanisms, elimination checks, execution budget | open-ended briefs |
 | Style | `references/styles/` | photoreal / anime / hybrid, each channel's own decisions only | one at a time |
 | Craft | `references/craft/` | camera, composition, aesthetics — style-agnostic | looked up per entry |
 | Diagnostics | `references/diagnostics/` | symptom tables, sources and evidence levels | when something breaks |
 
-A typical request loads `SKILL.md`, one contract file and one style file, and opens a craft file only for the specific technique it needs.
+A typical request loads `SKILL.md`, one contract file and one style file, and opens a craft file only for the specific technique it needs; an open-ended brief also loads the creative layer first.
 
 Maintenance rule: the reference tables are append-only. Entries may be added or corrected, never removed or merged; only the prose around them gets trimmed.
 
@@ -50,6 +51,8 @@ references/
 │   ├── negative.md                 layered negatives
 │   ├── text-in-image.md            glyph-size estimation, vertical text, text polluting the subject
 │   └── layout.md                   Layout JSON (experimental, off by default)
+├── creative/
+│   └── concept.md                  brief-first concept design: modes, mechanisms, execution budget
 ├── styles/
 │   ├── photo.md                    photoreal: opening modules, shadow control, bone structure, stills
 │   ├── anime.md                    anime: medium, format wrappers, finish, LoRA
@@ -67,6 +70,7 @@ scripts/
 examples/
 ├── photo.md                        two photoreal walkthroughs
 ├── anime.md                        two anime walkthroughs
+├── creative.md                     three concept walkthroughs, incl. poster before/after
 └── layout.md                       experimental JSON layout: source draft and compiled prompt
 docs/decisions/                     decision records (ADR) and their index
 ```
@@ -83,6 +87,7 @@ docs/decisions/                     decision records (ADR) and their index
 
 - **Layout is experimental and off by default.** The bundled compiler validates draft fields and coordinate conversion, not semantic placement or generated image quality. The example compiles with it; actual MOSS-Image output has not been tested. See `core/layout.md` and `examples/layout.md`.
 - **Rules are not yet under controlled test.** The technique layer comes from general photography and illustration practice. Claims of the form "this works better on this model" are marked unverified.
+- **The creative layer is taste, not measurement.** Concept modes, mechanism list and elimination checks are the author's judgement and marked unverified; they describe how to design a picture, not what the model will render. None of the three walkthroughs in `examples/creative.md` has confirmed output.
 - **Three channels only.** Multi-panel comics, poster layout and game HUD are not written up yet; many core and craft entries carry over, but each lacks its own rules.
 
 ## Roadmap
