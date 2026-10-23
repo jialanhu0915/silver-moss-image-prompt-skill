@@ -33,15 +33,17 @@
 
 ## 2. 坐标换算
 
-**优先用上游脚本，不要手算。** 上游仓库自带 `skills/moss-image-prompt-enhancer/scripts/compile_prompt.py`（本仓库不附带；只用标准库，运行前自己读一遍；用法示例见 `examples/layout.md`）：先写像素草稿（左上角原点、`[x_min,y_min,x_max,y_max]`、`bbox_coord_space:"abs"`、`bbox_format:"xyxy"`，外加顶层 `width`/`height`），脚本转成下面的中心原点 `yxyx` 整数坐标，并拒绝越界或非法框，不会静默裁剪。草稿格式是上游 skill 的内部约定，**不是**模型吃的格式，模型只吃编译后的那一行。
+**优先用本仓库随附的上游脚本，不要手算。** `scripts/vendor/openmoss/compile_prompt.py` 是 OpenMOSS/MOSS-Image 上游编译器的原样副本（来源与固定版本见 `scripts/UPSTREAM.md`），只使用 Python 标准库；运行前可先阅读脚本。它接收像素草稿（左上角原点、`[x_min,y_min,x_max,y_max]`、`bbox_coord_space:"abs"`、`bbox_format:"xyxy"`，外加顶层 `width`/`height`），转成中心原点 `yxyx` 整数坐标，并拒绝越界或非法框，不会静默裁剪。草稿格式是上游 skill 的内部约定，**不是**模型吃的格式，模型只吃编译后的那一行。
+
+从仓库根目录或已安装的 skill 目录根目录运行；将草稿保存为 `draft.json`：
 
 ```bash
-python <上游仓库>/skills/moss-image-prompt-enhancer/scripts/compile_prompt.py draft.json --output prompt.txt
+python scripts/vendor/openmoss/compile_prompt.py draft.json --output prompt.txt
 ```
 
 宽高必须是 16 的正整数倍；`width`/`height` 不进入编译结果，生成时要在提示词外单独填同样的尺寸。文字框用全局画布坐标，叠在物体上的文字也一样；框只是位置标注，不是要画出来的边框。
 
-没有脚本环境时才手算（本 skill 不附带脚本），以画布中心为原点，x 向右、y 向下递增；把常规左上角原点的坐标分别减去 `W/2` 与 `H/2`：
+没有 Python 环境时才手算，以画布中心为原点，x 向右、y 向下递增；把常规左上角原点的坐标分别减去 `W/2` 与 `H/2`：
 
 ```text
 yxyx_centered = [y1 - H/2, x1 - W/2, y2 - H/2, x2 - W/2]

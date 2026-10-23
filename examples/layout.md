@@ -45,10 +45,10 @@
 
 ## 编译
 
-从 MOSS-Image 仓库根目录运行上游脚本；将草稿另存为 `draft.json`：
+从本仓库根目录运行随附脚本；将可编辑草稿另存为 `draft.json`：
 
 ```powershell
-python skills/moss-image-prompt-enhancer/scripts/compile_prompt.py draft.json --output prompt.txt
+python scripts/vendor/openmoss/compile_prompt.py draft.json --output prompt.txt
 ```
 
 ## 编译结果
@@ -74,5 +74,5 @@ worst quality, bad anatomy, jpeg artifact, blurry, out of focus, lowres, anime, 
 ## 本次验证
 
 - 副标题框原先落在右侧中部（y 340–520），与「右下角」的描述不符，已改为 `[650,800,930,930]`。编译器只检查语法和边界，查不出这类位置与描述的不一致，需要人工对照。
-- 当前示例的编译结果由手算得出（`y−H/2`、`x−W/2`，整数边），**尚未用上游脚本编译**。
+- 当前示例已用本仓库随附的上游编译器副本编译；输出与上方单行 JSON 一致。该校验只覆盖格式和坐标，不覆盖文字是否准确出图。
 - MOSS-Image 实际出图：**未测试**。

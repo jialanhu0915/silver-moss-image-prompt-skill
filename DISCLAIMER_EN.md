@@ -1,12 +1,12 @@
 # Legal Notice and User Responsibility
 
-[简体中文](DISCLAIMER.md) · **English**　　Last updated: 2026-10-22　　Applies to: v0.2.x onward
+[简体中文](DISCLAIMER.md) · **English**　　Last updated: 2026-10-23　　Applies to: v0.2.x onward
 
 > **By using this project you confirm that you have read and agree to this notice.** This project is not responsible for any image produced from its prompts, nor for how you use such images. All legal risk is borne by the user. If you do not agree, do not use it. This notice states the project's position and warns of risk; it is **not a guarantee of immunity**. Jurisdictions differ on whether terms such as “use means agreement” or “borne by the user” are enforceable, and this notice is no substitute for legal review. The English and Chinese versions are intended to say the same thing; if you find a discrepancy, please open an issue in the repository.
 
 ## 1. What this is and is not
 
-1. This project is a **prompt-writing method** in Markdown. It contains no model, no weights, no scripts, and generates no images. Images are produced by MOSS-Image (or another model) that the user deploys or calls.
+1. This project is a **prompt-writing method** in Markdown. It contains no model or weights and does not generate images; the optional Layout draft compiler only validates draft structure and converts coordinates. Images are produced by MOSS-Image (or another model) that the user deploys or calls.
 2. It is **not an OpenMOSS project** and is not endorsed, authorized or reviewed by OpenMOSS. OpenMOSS and the upstream repository are not responsible for this project, and it does not represent their views (see [NOTICE.md](NOTICE.md)).
 3. It is **not legal advice**. The laws listed here are pointers only and may be incomplete, inaccurate or out of date. Consult official texts and a qualified lawyer in your jurisdiction.
 

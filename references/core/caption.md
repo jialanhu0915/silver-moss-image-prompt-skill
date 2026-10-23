@@ -27,7 +27,7 @@
 ## 4. 骨架
 
 ```text
-[光照与色温]. [媒介与镜头].
+[光照与色温]. [媒介、镜头与构图钩子].
 [主体：年龄 + 骨相 + 发色发质 + 表情 + 服饰 + 配饰].
 [动作：静态结果，如 shirt already pushed up，不要 pulling up her shirt].
 [场景：位置 + 材质 + 背景层次].
@@ -36,6 +36,23 @@
 
 进行时动词要占手，模型会为此多画一只手；静态结果只摆姿势。
 
+### 4.1 润色幅度跟着需求走
+
+先弄清用户想要什么样的图片；不按字数判断需求是否详细，也不重复询问已经说清的内容。若主体 / 题材、媒介 / 画风或主要气质等关键方向仍不明确，先问一两个聚焦问题；若核心想法清楚、只是画面细节少，就直接补全，不让用户填写问卷。
+
+- **描述已足够具体**：保留用户的构图、气质与独特选择；润色语序、主次和可见呈现，只补能强化原意的细节，不另起一套创意方向。
+- **描述比较粗略**：依据整体题材和风格补出连贯方案，明确主焦点，再从构图、动作 / 道具、光色、材质中选 2–3 个互相支撑的细节。若不同选择会明显改变画面，就先询问或给少量方向供选。
+
+两种情况都不改变用户指定的主体、数量、关系、动作、风格、文字与排除项；不编造姓名、品牌、事件、年代等真实事实。避免无关形容词堆叠，把选择写成位置、形状、受光和接触关系，而不是只写「电影感」「梦幻」「高级」。用户明确要求忠实翻译、极简或不加戏时，按要求收敛。
+
+例：「雨夜街摊，一个女人拿热饮」——不止写 `A woman at a street stall on a rainy night, holding a hot drink.`，可以定成：
+
+```text
+Seen past the rain-beaded awning edge, a woman pauses in the left third with both hands around a paper cup. A narrow amber lamp catches a thread of steam; green fluorescent reflections break across the wet counter and continue as small pools down the empty alley on the right.
+```
+
+这里用遮挡、左右留白和绿 / 琥珀色反射组织画面；若用户已经指定了主体位置、光色或其他细节，就应以其选择为准。此例是写法示例，不是效果保证。
+
 ## 5. 反模式
 
 | 别写 | 改成 |
@@ -43,6 +60,7 @@
 | `masterpiece, best quality, 8k, ultra detailed` | 具体质感与笔触 |
 | 相机/引擎/软件型号单独写 | 它造成的可见结果 |
 | `beautiful, nice lighting` | `one warm beam from the back-left, deep shadow on the front` |
+| `dreamy, cinematic, vivid, detailed` 等互不关联的氛围词 | 一个视觉钩子 + 2–3 个互相支撑的可见细节 |
 | `[填入角色名]` 之类占位符 | 写具体内容或删掉该项 |
 | caption 里写 bbox、JSON、坐标 | 移到提示词外面 |
 

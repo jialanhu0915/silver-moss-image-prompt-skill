@@ -2,7 +2,7 @@
 
 [English](README.md) · **简体中文**
 
-写给 [MOSS-Image](https://github.com/OpenMOSS/MOSS-Image) 的提示词 skill。把一个想法、一段参考描述或一堆 Danbooru tag，写成一段模型真想画的 caption，外加一条负面提示词和一组采样参数。
+写给 [MOSS-Image](https://github.com/OpenMOSS/MOSS-Image) 的提示词 skill。把一个想法、一段参考描述或一堆 Danbooru tag，按需求详略润色成 caption：细致描述以保真细化为主，粗略想法则补足画面方向；再配上负面提示词和采样参数。
 
 三条风格通道——**写实**、**二次元**、**混合**（跨次元合成、三渲二、媒介叠合、同图双画风）——之下是一层风格无关的技法词典：镜头、构图、美学。
 
@@ -10,7 +10,7 @@
 
 - 不是 OpenMOSS 官方项目，只是按官方规范写出来的工作方法（出处见 [NOTICE.md](NOTICE.md)）
 - 不是模板库，没有一键套用的固定句式大全
-- 不生成图片，纯 Markdown，无脚本、无依赖
+- 不生成图片。可选的 Layout 编译脚本只校验并转换 JSON 草稿；使用 Python 标准库，不额外安装依赖
 
 ## 内容怎么组织
 
@@ -61,6 +61,9 @@ references/
 └── diagnostics/
     ├── troubleshooting.md          症状 → 原因 → 改法
     └── sources.md                  出处、证据等级、明确不采用的社区说法
+scripts/
+├── UPSTREAM.md                       上游脚本来源与更新流程
+└── vendor/openmoss/compile_prompt.py 可选 Layout 草稿编译器
 examples/
 ├── photo.md                        写实两例
 ├── anime.md                        二次元两例
@@ -78,7 +81,7 @@ docs/decisions/                     决策记录（ADR）及索引
 
 ## 已知边界
 
-- **Layout 实验性且默认关闭。** 上游提供编译脚本；本 skill 增加了一个示例：其坐标转换在调整副标题框之前通过过编译器验证；调整后的框目前仅手算、尚未重跑编译器；MOSS-Image 实际出图未测试。见 `core/layout.md` 与 `examples/layout.md`。
+- **Layout 实验性且默认关闭。** 随附编译器可校验草稿字段并转换坐标，不校验语义位置是否吻合或实际出图质量。示例已通过编译；MOSS-Image 实际出图未测试。见 `core/layout.md` 与 `examples/layout.md`。
 - **规则尚未做受控测试。** 技法层来自摄影与插画的通行知识；「在本模型上更有效」这类断言均标为未验证。
 - **只写了三条通道。** 多分镜漫画、海报排版、游戏 HUD 尚未成篇；core 与 craft 的条目大多可以复用，但各自缺专项规则。
 
@@ -92,7 +95,7 @@ docs/decisions/                     决策记录（ADR）及索引
 
 ## 致谢
 
-- [OpenMOSS/MOSS-Image](https://github.com/OpenMOSS/MOSS-Image)：模型、用户指南、标注规范与 Layout schema（Apache-2.0），署名见 [NOTICE.md](NOTICE.md)
+- [OpenMOSS/MOSS-Image](https://github.com/OpenMOSS/MOSS-Image)：模型、用户指南、标注规范、Layout schema 与随附的 Layout 编译器（Apache-2.0）；署名见 [NOTICE.md](NOTICE.md) 和 [`scripts/UPSTREAM.md`](scripts/UPSTREAM.md)
 - 技法层的中英对照，以及「术语必须降维成可见事实」这一原则，整理自摄影、电影摄影与插画教学的通行内容
 
 变更记录见 [CHANGELOG.md](CHANGELOG.md)。

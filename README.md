@@ -2,7 +2,7 @@
 
 **English** · [简体中文](README_ZH.md)
 
-A prompt-writing skill for [MOSS-Image](https://github.com/OpenMOSS/MOSS-Image). It turns an idea, a reference description or a Danbooru tag dump into a caption the model actually draws, plus a negative prompt and sampling settings.
+A prompt-writing skill for [MOSS-Image](https://github.com/OpenMOSS/MOSS-Image). It turns an idea, a reference description or a Danbooru tag dump into a caption polished to match the brief—preserving detailed direction or developing a rough concept—plus a negative prompt and sampling settings.
 
 Three style channels — **photoreal**, **anime**, **hybrid** (2D-in-3D, toon-shaded 3D, mixed media, split-style) — over a style-agnostic technique layer for camera, composition and aesthetics.
 
@@ -10,7 +10,7 @@ Three style channels — **photoreal**, **anime**, **hybrid** (2D-in-3D, toon-sh
 
 - Not an OpenMOSS project. It is a working method written against the official docs (see [NOTICE.md](NOTICE.md)).
 - Not a template library. There is no one-click prompt generator here.
-- Not an image generator. Plain Markdown, no scripts, no dependencies.
+- Not an image generator. The optional Layout compiler validates and converts JSON drafts only; it uses the Python standard library and does not generate images.
 
 ## How it is organized
 
@@ -61,6 +61,9 @@ references/
 └── diagnostics/
     ├── troubleshooting.md          symptom → cause → fix
     └── sources.md                  citations, evidence levels, rejected folklore
+scripts/
+├── UPSTREAM.md                       vendored compiler source and update procedure
+└── vendor/openmoss/compile_prompt.py optional Layout draft compiler
 examples/
 ├── photo.md                        two photoreal walkthroughs
 ├── anime.md                        two anime walkthroughs
@@ -78,7 +81,7 @@ docs/decisions/                     decision records (ADR) and their index
 
 ## Known limits
 
-- **Layout is experimental and off by default.** The upstream repository provides a compiler; this skill includes one example whose coordinate conversion was checked with the compiler before its subtitle box was adjusted; the adjusted box is hand-computed and has not been recompiled, and actual MOSS-Image output has not been tested. See `core/layout.md` and `examples/layout.md`.
+- **Layout is experimental and off by default.** The bundled compiler validates draft fields and coordinate conversion, not semantic placement or generated image quality. The example compiles with it; actual MOSS-Image output has not been tested. See `core/layout.md` and `examples/layout.md`.
 - **Rules are not yet under controlled test.** The technique layer comes from general photography and illustration practice. Claims of the form "this works better on this model" are marked unverified.
 - **Three channels only.** Multi-panel comics, poster layout and game HUD are not written up yet; many core and craft entries carry over, but each lacks its own rules.
 
@@ -92,7 +95,7 @@ docs/decisions/                     decision records (ADR) and their index
 
 ## Credits
 
-- [OpenMOSS/MOSS-Image](https://github.com/OpenMOSS/MOSS-Image) — model, user guide, captioning spec, Layout schema (Apache-2.0). Attribution in [NOTICE.md](NOTICE.md).
+- [OpenMOSS/MOSS-Image](https://github.com/OpenMOSS/MOSS-Image) — model, user guide, captioning spec, Layout schema and the vendored Layout compiler (Apache-2.0). Attribution and pinned compiler source in [NOTICE.md](NOTICE.md) and [`scripts/UPSTREAM.md`](scripts/UPSTREAM.md).
 - The bilingual terminology tables and the principle that a term must be reduced to a visible fact are compiled from general photography, cinematography and illustration teaching.
 
 Release history is in [CHANGELOG.md](CHANGELOG.md).

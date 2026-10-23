@@ -22,6 +22,6 @@
 
 使用者责任、禁止用途与责任限制见 [DISCLAIMER.md](DISCLAIMER.md)（[English](DISCLAIMER_EN.md)）。
 
-## 未使用的材料
+## 上游脚本与原创内容
 
-本项目未基于任何第三方提示词 skill 改写，也未复制上游 prompt-enhancer 的文本或脚本，只引用其中的字段与坐标规则作为事实，并指向原脚本。分区结构、证据分级体系、档位（Q/R）划分、`craft/` 技法层均为本项目原创设计。
+本项目未基于任何第三方提示词 skill 改写，也未复制上游 prompt-enhancer 的提示词文案。上游 `compile_prompt.py` 原样随附于 `scripts/vendor/openmoss/compile_prompt.py`，来源、固定 commit 与更新方式见 [`scripts/UPSTREAM.md`](scripts/UPSTREAM.md)；该脚本遵循 Apache License 2.0，本仓库 `LICENSE` 与固定版本上游许可证文本一致。分区结构、证据分级体系、档位（Q/R）划分、`craft/` 技法层均为本项目原创设计。

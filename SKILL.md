@@ -1,12 +1,13 @@
 ---
 name: silver-moss-image-prompt-skill
 description: >-
-  Write and debug MOSS-Image prompts. Turn an idea, a reference description or a
-  Danbooru tag dump into a caption-style positive/negative prompt plus sampling
-  settings, covering three style channels — photoreal, anime and hybrid (2D-in-3D,
+  Write and debug MOSS-Image prompts with deliberate visual direction. Turn an
+  idea, a reference description or a Danbooru tag dump into a caption-style
+  positive/negative prompt plus sampling settings, covering three style channels —
+  photoreal, anime and hybrid (2D-in-3D,
   toon-shaded 3D, mixed media, split-style) — with in-image text rendering,
   word-order rules, layered negatives and symptom-driven debugging.
-  适用于 MOSS-Image 提示词编写与排错、写实/二次元/混合三条风格通道、图内文字渲染、负面词分层。
+  适用于 MOSS-Image 提示词编写与排错、写实/二次元/混合三条风格通道、图内文字渲染、负面词分层；简略需求默认做视觉润色，而非逐字翻译。
   Use when the user mentions MOSS-Image / MOSS 出图 / moss-image, or wants image
   prompts written, rewritten or fixed for it.
 license: Apache-2.0
@@ -16,6 +17,8 @@ version: 0.3.0
 # MOSS-Image 提示词
 
 Qwen3.5-9B 编码器 → 42 层单流 DiT → FLUX.2 VAE。吃长而具体的散文，不是 tag 堆；条件上限约 4K tokens。
+
+先弄清用户想要什么样的图片；按描述详略调整润色幅度：细节充分时保真细化，想法粗略时补足画面方向。只在关键意图不明时追问，不重复询问用户已经说清的内容。细则见 `references/core/caption.md` §4.1。
 
 ## 交付物
 
@@ -41,7 +44,7 @@ Qwen3.5-9B 编码器 → 42 层单流 DiT → FLUX.2 VAE。吃长而具体的散
 | 光位、色彩、画种流派、材质 | `craft/aesthetics.md` |
 | 图内文字 | `core/text-in-image.md` |
 | 参数不确定 | `core/params.md` |
-| 语序、长度、语言、tag 串 | `core/caption.md` |
+| 视觉润色、语序、长度、语言、tag 串 | `core/caption.md` |
 | 出图有毛病 | `diagnostics/troubleshooting.md` |
 | 规则出处 | `diagnostics/sources.md` |
 | 完整范例 | `examples/photo.md`、`examples/anime.md` |
@@ -52,8 +55,8 @@ Qwen3.5-9B 编码器 → 42 层单流 DiT → FLUX.2 VAE。吃长而具体的散
 ## 流程
 
 1. **定通道**：写实 / 二次元 / 混合。混合先答三问——谁是主体、靠什么融合、边界在哪（`styles/hybrid.md`）。
-2. **抽需求**：主体、数量、关系、媒介、风格、排除项、必须出现的文字，一项不丢。
-3. **补可见细节**：外观动作 → 场景 → 光线色温 → 镜头景别 → 材质氛围。只写看得见的。
+2. **确认意图与抽需求**：先判断用户是否已说清想要什么图。主体、数量、关系、媒介、风格、必须出现的文字和排除项一项不丢；若缺失的信息会彻底改变画面，先问一个聚焦问题，不发问卷。
+3. **按描述详略润色**：细节充分时保留用户的构图与气质，优化表达、层次和可见细节，只添相互支撑的小补充；想法粗略但核心明确时，补出合适的构图钩子、动作 / 道具、光色和材质。不要改掉用户的核心意图或编造真实事实；用户要忠实翻译或极简时照做（`core/caption.md` §4.1）。
 4. **定语序**：光线与色温在前，主体居中段，服饰动作在后；多主体先主后次，次角色句首写反向特征。
 5. **配参数与负面**：按 `core/params.md` 选档，按 `core/negative.md` 分层拼词。
 6. **自检**（§自检），不过就改。
@@ -71,7 +74,7 @@ Shift 5.0、Euler 通用。**规则与档绑定**：标 `[R]` 的条目只在关
 
 ```text
 【正面提示词】
-[光线与色温句], [媒介与镜头句]. [主体：年龄骨相 + 发型发质 + 表情 + 服饰]. [动作与接触关系]. [场景与背景]. [材质与收尾].
+[光线与色温句], [媒介、镜头与构图钩子]. [主体：年龄骨相 + 发型发质 + 表情 + 服饰]. [动作与接触关系]. [场景与背景]. [材质与收尾].
 【负面提示词】
 worst quality, bad anatomy, watermark, jpeg artifact, [L1], [L2 风格封杀], [L3 场景追加]
 【采样参数】
@@ -91,12 +94,13 @@ worst quality, bad anatomy, watermark, jpeg artifact, [L1], [L2 风格封杀], [
 7. 有无 `masterpiece, 8k, ultra detailed` 这类空转词，或把相机型号、渲染引擎当画面效果写。
 8. 混合画面是否只写一套光，并写明谁接受谁的光、边界在哪。
 9. 有图内文字时，负面里是否已去掉 `watermark`、`text`。
+10. 润色幅度是否符合用户描述的详略？粗略需求有无补足画面方向；细致需求有无保住其独特选择，而非套入另一套风格？
 
 这两档是本 skill 的预设组合，官方只给单项推荐值。
 
 ## Layout
 
-官方标为 Experimental。本 skill 提供上游编译器的使用说明与一个 JSON 示例，但**尚未验证 MOSS-Image 实际出图质量**。**默认只交付 caption。**用户明确要求 Layout，或文字 / 元素必须精确落位时，读 `core/layout.md`；示例见 `examples/layout.md`。
+官方标为 Experimental。本仓库附带上游编译器的原样副本 `scripts/vendor/openmoss/compile_prompt.py` 和一个 JSON 示例；**尚未验证 MOSS-Image 实际出图质量**。**默认只交付 caption。**用户明确要求 Layout，或文字 / 元素必须精确落位时，读 `core/layout.md`；示例见 `examples/layout.md`。
 
 ## 红线
 
