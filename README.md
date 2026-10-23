@@ -93,7 +93,7 @@ docs/decisions/                     decision records (ADR) and their index
 - **Rules are not yet under controlled test.** The technique layer comes from general photography and illustration practice. Claims of the form "this works better on this model" are marked unverified.
 - **The creative layer is taste, not measurement.** Concept modes, mechanism list and elimination checks are the author's judgement and marked unverified; they describe how to design a picture, not what the model will render. None of the four walkthroughs in `examples/creative.md` has confirmed output.
 - **The direction layer borrows from film and design practice.** Framing, camera and colour advice is general craft, not measured behaviour of this model; the decision cap (2–5 items) is a guard against prompt bloat, not a validated threshold.
-- **Three channels only.** Multi-panel comics, poster layout and game HUD are not written up yet; many core and craft entries carry over, but each lacks its own rules.
+- **Three channels only.** Multi-panel comics and game HUD are not written up yet. Posters now have `direction/poster.md` for hierarchy, safe title zone, reading path and type-image relation, but complex infographics, multi-column collateral and exact text placement still lack dedicated procedures and testing; many core and craft entries carry over, yet each lacks its own rules.
 
 ## Roadmap
 
@@ -101,7 +101,7 @@ docs/decisions/                     decision records (ADR) and their index
 - [ ] Four-scenario creative A/B, upsampler off: library (boost), cosmic poster (spectacle), castle bridge (faithful), tea poster (flat print); 2–3 seeds each, blind-rated for first-glance impact, concept distinctiveness, compositional clarity and brief fit
 - [ ] Direction-layer A/B: same concept, baseline vs one or two added decisions only (camera, then light), so the gain can be attributed
 - [ ] Multi-panel comic channel (blocked on Layout stability)
-- [ ] Poster and editorial layout channel
+- [ ] Extend poster work: complex infographics, multi-column collateral, exact text placement (basics live in `direction/poster.md`)
 - [ ] Game screenshot / HUD channel
 - [ ] ComfyUI and Python API field mapping (the official API uses `uncond_skip_layers`; UIs name it differently)
 
