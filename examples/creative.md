@@ -1,8 +1,8 @@
-# 创意走查三例
+# 创意走查四例
 
-三例都按 `references/creative/concept.md` 的流程写：判模式 → 固化约束 → 定主题三角 → 选一条机制 → 过淘汰判据 → 计价执行预算 → 编译成 caption。
+四例都按 `references/creative/concept.md` 与 `references/direction/brief.md` 的流程写：判模式与强度 → 固化约束 → 定主题三角 → 选机制 → 过淘汰判据 → 计价执行预算 → 定 2–5 项导演决策 → 编译成 caption。
 
-例 1、例 2 的提示词**未出图**；例 3 的「改前」是你实际跑过的版本，「改后」未出图。三例都不构成效果保证。
+例 1、例 2、例 4 的提示词**未出图**；例 3 的「改前」是你实际跑过的版本，「改后」未出图。四例都不构成效果保证。
 
 ---
 
@@ -128,3 +128,55 @@ worst quality, jpeg artifact, blurry, lowres, anime, 2d character, illustration 
 **自检**：一句话说得出（「两版色套印错开，小字在重叠处重影」）✓；主焦点一个（杯 + 错位轮廓）✓；平面类无需落地三件套，但光向已由「平面印刷」统一 ✓。
 
 **出图状态**：改前两版已跑（upsampler 开启）；改后**未出图**。要判断这个钩子是否真的更抓眼，需同参数、关掉 upsampler 各跑一版再比。
+
+---
+
+## 例 4：明确要震撼 → 奇观档
+
+**需求**：「设计一张宏大、震撼、有强烈视觉记忆点的奇幻海报：巨龙与城堡。」
+
+**判据**：只给了主题与强度 → 模式=自由，强度=奇观（用户明确说了宏大、震撼、记忆点）。奇观档允许 1 主 + 2 辅，但必须共享一条空间规则。
+
+**主题三角**：主视觉海报；情绪是被压住（人很小、世界很大）；第一眼要记住「城堡长在脊背上」。
+
+**机制**：主 = 反常主体—环境关系（城堡是巨龙脊椎）；辅 1 = 尺度反转（塔楼与远峰等高，人只有一个骨节宽）；辅 2 = 时间凝固（吸气时灯火逐层熄灭）。**空间规则只有一条：山脊线**，从近处骨节延伸到远山上缘，所有异象都由它组织。
+
+**导演简报**（`direction/brief.md` §2 六问 + `concept.md` §8.3 追加四条）：
+
+| 问题 | 答案 |
+| :--- | :--- |
+| 视觉目标 | 第一眼：山脊上的城堡；情绪：被压住，人很小 |
+| 构图 | 脊线从左下角指向右上地平；人只占一个骨节，天空留给远峰 |
+| 镜头 | 略低于脊背、与骑士同高；70mm 压缩，塔楼与远峰等高 |
+| 空间 | 前景骨节 + 骑士，中景城堡层叠，远景雪山；空气透视分层 |
+| 光色 | 主光为暮色天空；近侧冷蓝阴影、远侧琥珀窗火，强调色只有窗火 |
+| 版式 | 不适用（非海报） |
+| 正在发生的证据 | 吸气时窗火逐层熄灭、骨缝冒出蒸汽、雪被抬起一掌高 |
+
+```text
+【正面提示词】
+Late blue-hour light over a mountain range, thin snow drifting across a ridgeline that is the exposed spine of a sleeping dragon: each vertebra a rounded stone mass the size of a hill, the castle built along the spine in six stepped tiers, its towers reaching the height of the far peaks.
+Camera slightly below the spine, at the height of a lone rider standing on the nearest vertebra in the lower-left foreground, his figure spanning one joint and his shadow lying across the scaled stone. The spine runs from the lower-left corner to the upper-right horizon, compressed by a 70mm lens.
+Steam escapes in slow threads through the gaps between joints; as the dragon inhales, the castle windows dim tier by tier from the near tower to the far ones, and the snow on the ridge lifts a hand's width.
+Real stone and scale texture, atmospheric haze separating three depth layers, cold blue shadow on the near flank and warm amber window light on the far flank, zero flat front fill light.
+
+【负面提示词】
+worst quality, bad anatomy, watermark, jpeg artifact, blurry, out of focus, lowres, distorted face, anime, 2d, illustration, cel shading, painting, 3d render, cgi, plastic skin, flat front lighting, studio fill light, dragon head close-up, visible wings, glowing magic runes, multiple dragons, floating castle, cartoon dragon, second light source
+
+【采样参数】
+1536×864 / Steps 50 / CFG 3.0 / Shift 5.0 / Euler / SLG uncond_skip_layers=[22] / Seed 随机
+```
+
+**为什么这么写**
+
+| 处理 | 依据 |
+| :--- | :--- |
+| 只拍脊背，不露龙头与翅膀 | 露出第二焦点会把主视觉拆成两个（`concept.md` §2.1 层级服从） |
+| 塔楼与远峰等高、人占一个骨节 | 尺度靠「人与已知物」对照，而不是靠形容词（§8.1） |
+| 吸气时灯火逐层熄灭 | 用一个细节证明关系正在发生（`concept.md` §8.3 第 2 条） |
+| 三个机制都挂在山脊线上 | 奇观档要求一条空间规则统一全部异象 |
+| 负面封 `dragon head close-up`、`visible wings` | 把模型容易自己补的第二焦点提前挡掉 |
+
+**自检**：一句话说得出（「城堡长在沉睡巨龙的脊背上，吸气时灯火次第熄灭」）✓；主焦点一个（脊背与城堡）✓；六问与奇观追加四条答完 ✓；导演决策 4 项（构图 / 镜头 / 空间 / 光色），未超上限 ✓。
+
+**风险**：巨龙题材超出写实通道的常规可靠性，材质与形体可能退化成概念图质感；这是**未验证**判断，需出图确认。
